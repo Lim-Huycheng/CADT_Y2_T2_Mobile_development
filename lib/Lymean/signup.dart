@@ -56,14 +56,14 @@ class HelloRegisterToGetStarted extends StatelessWidget {
     return SizedBox(
       width: 387,
       child: const Text(
-        'Hello ! \nRegister to get started ',
+        'Hello ! \nRegister to get started',
         style: TextStyle(
           color: Colors.black,
-          fontSize: 32,
+          fontSize: 30,
           fontFamily: 'SourceSerif',
           fontWeight: FontWeight.w600,
           height: 1.56,
-          letterSpacing: 3.20,
+          letterSpacing: 2.90,
         ),
       ),
     );
