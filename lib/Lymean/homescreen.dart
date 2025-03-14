@@ -70,6 +70,7 @@ class _CombinedGroupState extends State<CombinedGroup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
