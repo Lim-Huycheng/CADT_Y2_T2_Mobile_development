@@ -8,6 +8,7 @@ class CombinedGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

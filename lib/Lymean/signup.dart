@@ -14,39 +14,39 @@ class RegistrationFormState extends State<RegistrationForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey, // Assign form key
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const HelloRegisterToGetStarted(),
-              const SizedBox(height: 20),
-              const EnterYourPersonalInformation(),
-              const SizedBox(height: 20),
-              Group19(formKey: _formKey),
-              const SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // If form is valid, proceed with submission
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data...')),
-                      );
-                    }
-                  },
-                  child: const Text('Register'),
-                ),
+        child: Column(
+          children: [
+            const HelloRegisterToGetStarted(),
+            const SizedBox(height: 20),
+            const EnterYourPersonalInformation(),
+            const SizedBox(height: 20),
+            Expanded(  // Wrap Group19 with Expanded
+              child: Group19(formKey: _formKey),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    // If form is valid, proceed with submission
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data...')),
+                    );
+                  }
+                },
+                child: const Text('Register'),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
 
 class HelloRegisterToGetStarted extends StatelessWidget {
   const HelloRegisterToGetStarted({super.key});
@@ -126,8 +126,16 @@ class Group19State extends State<Group19> {
         _buildInputField('Enter your password', passwordController, (value) {
           if (value == null || value.isEmpty) {
             return 'Password is required';
-          } else if (value.length < 6) {
-            return 'Password must be at least 6 characters';
+          } else if (value.length < 8) {
+            return 'Password must be at least 8 characters';
+          } else if (!RegExp(r'[A-Z]').hasMatch(value)) {
+            return 'Password must contain at least one uppercase letter';
+          } else if (!RegExp(r'[a-z]').hasMatch(value)) {
+            return 'Password must contain at least one lowercase letter';
+          } else if (!RegExp(r'[0-9]').hasMatch(value)) {
+            return 'Password must contain at least one number';
+          } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
+            return 'Password must contain at least one special character';
           }
           return null;
         }, obscureText: true),
