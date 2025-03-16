@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "122693931123",
+    "project_id": "human-firewall-bfdcb",
+    "storage_bucket": "human-firewall-bfdcb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122693931123:android:6409c708fb256d35685a06",
+        "android_client_info": {
+          "package_name": "com.example.human_firewall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122693931123-37so9v6qkco02mackahrcn15c1bg0bcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJGHZaiHqE1qCwyD5BOvnTIa51Yxc0R50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122693931123-37so9v6qkco02mackahrcn15c1bg0bcv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "122693931123-mmall9gtr2v1fqdgf7eu1u18asndntce.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.humanFirewall"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

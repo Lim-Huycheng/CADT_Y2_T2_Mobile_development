@@ -1,7 +1,22 @@
+buildscript {
+    repositories {
+        google()  // Google's Maven repository
+        mavenCentral() // Maven central repository
+    }
+    dependencies {
+        // Add the classpath for Google services (for Firebase)
+        classpath 'com.google.gms:google-services:4.3.15' // This is required for Firebase integration
+
+        // Update Kotlin version to 2.1.0 (or latest stable)
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0"  // Kotlin plugin version
+    }
+}
+
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        google()  // Google's Maven repository for Android dependencies
+        mavenCentral() // Maven central repository for other dependencies
+        jcenter() // Optional, you may need this for some dependencies
     }
 }
 
@@ -9,6 +24,7 @@ rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
