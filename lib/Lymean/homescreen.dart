@@ -1,8 +1,70 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:human_firewall/Lymean/signup.dart';
 
-class CombinedGroup extends StatelessWidget {
+class CombinedGroup extends StatefulWidget {
   const CombinedGroup({super.key});
+
+  @override
+  _CombinedGroupState createState() => _CombinedGroupState();
+}
+
+class _CombinedGroupState extends State<CombinedGroup> {
+  final PageController _pageController = PageController();
+  int _currentIndex = 0;
+  late Timer _timer;
+
+  final List<Map<String, String>> slides = [
+    {
+      "image": "assets/images/security.jpg",
+      "title": "Security",
+      "text": "Security isn’t just a technology problem!\nIt’s a personal responsibility, protect your data and protect your future."
+    },
+    {
+      "image": "assets/images/threat.jpg",
+      "title": "Threat",
+      "text": "Every threat is an opportunity to strengthen your defenses! Don’t wait for the attack, prepare for it."
+    },
+    {
+      "image": "assets/images/social.jpg",
+      "title": "Social",
+      "text": "A community forum is where knowledge is shared, ideas are exchanged, and solutions are built together."
+    },
+    {
+      "image": "assets/images/quiz.jpg",
+      "title": "Quiz",
+      "text": "Test your knowledge, sharpen your skills! Because in cybersecurity, staying informed is the first step to staying secure."
+    },
+    
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _startAutoSlide();
+  }
+
+  void _startAutoSlide() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (_currentIndex < slides.length - 1) {
+        _currentIndex++;
+      } else {
+        _currentIndex = 0; // Reset to the first slide
+      }
+      _pageController.animateToPage(
+        _currentIndex,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,41 +74,76 @@ class CombinedGroup extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Group18 Content (Security Section)
-            Container(
+            // Slideshow Section
+            SizedBox(
               width: 340,
               height: 340,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/security.jpg"),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x3F000000),
-                    blurRadius: 4,
-                    offset: Offset(0, 4),
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: slides.length,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(slides[index]["image"]!),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x3F000000),
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 10),
+
+            // Dots Indicator
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                slides.length,
+                (index) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _currentIndex == index ? Colors.blue : Colors.grey,
                   ),
-                ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Security',
-              style: TextStyle(
+
+            // Dynamic Title
+            Text(
+              slides[_currentIndex]["title"]!,
+              style: const TextStyle(
                 fontSize: 48,
                 fontWeight: FontWeight.w900,
                 fontFamily: 'SourceSerif',
               ),
             ),
             const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+
+            // Dynamic Description
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Security isn’t just a technology problem! \n It’s a personal responsibility, protect your data and protect your future.',
+                slides[_currentIndex]["text"]!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   fontFamily: 'SourceSans',
@@ -56,22 +153,22 @@ class CombinedGroup extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // Group10 Content (Sign Up/Login Buttons)
+            // Buttons
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the second page when the button is clicked
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const RegistrationForm()),
+                        MaterialPageRoute(
+                            builder: (context) => const RegistrationForm()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0081D7),
-                      minimumSize: Size(389, 60),
+                      backgroundColor: const Color(0xFF0081D7),
+                      minimumSize: const Size(389, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -89,15 +186,15 @@ class CombinedGroup extends StatelessWidget {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the second page when the button is clicked
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const CombinedGroup()),
+                        MaterialPageRoute(
+                            builder: (context) => const CombinedGroup()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF8B2D),
-                      minimumSize: Size(389, 60),
+                      backgroundColor: const Color(0xFFFF8B2D),
+                      minimumSize: const Size(389, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
