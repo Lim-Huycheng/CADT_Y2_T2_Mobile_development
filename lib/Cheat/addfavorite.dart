@@ -13,7 +13,7 @@ class Notitest1 extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Notification',
-            style: TextStyle(fontFamily: 'Source Sans Pro'),
+            style: TextStyle(fontFamily: 'SourceSans'),
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
