@@ -3,58 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:human_firewall/Lymean/TermAndCondition.dart';
 import 'package:human_firewall/Lymean/Verify.dart';
 import 'package:human_firewall/Lymean/Login.dart';
-import 'package:human_firewall/Lymean/homescreen.dart';
 
-class RegistrationForm extends StatefulWidget {
-  const RegistrationForm({super.key});
+class HomepageScreen extends StatefulWidget {
+  const HomepageScreen({super.key});
 
   @override
-  RegistrationFormState createState() => RegistrationFormState();
+  HomepageScreenState createState() => HomepageScreenState();
 }
 
-class RegistrationFormState extends State<RegistrationForm> {
+class HomepageScreenState extends State<HomepageScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
   bool _isLoading = false; // Loading state for registration
 
   void _validateAndSubmit() async {
-  setState(() {
-    _autoValidate = true;
-  });
-
-  if (_formKey.currentState!.validate()) {
     setState(() {
-      _isLoading = true; // Start loading
+      _autoValidate = true;
     });
 
-    try {
-      // Simulate backend API call
-      await Future.delayed(const Duration(seconds: 2));
-
-      // On success, navigate to CombinedGroup and remove all previous routes
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const CombinedGroup()), // Navigate to CombinedGroup
-        (route) => false, // This removes all previous pages from the stack
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registration Successful!')),
-      );
-    } catch (e) {
-      // Handle error (e.g., username/email already exists)
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
-    } finally {
+    if (_formKey.currentState!.validate()) {
       setState(() {
-        _isLoading = false; // Stop loading
+        _isLoading = true; // Start loading
       });
+
+      try {
+        // Simulate backend API call
+        await Future.delayed(const Duration(seconds: 2));
+
+        // On success, navigate to another screen (e.g., home screen)
+        Navigator.pushReplacementNamed(context, '/home'); // Example: Navigate to Home page
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Registration Successful!')),
+        );
+      } catch (e) {
+        // Handle error, e.g., username/email already exists
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false; // Stop loading
+        });
+      }
     }
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {

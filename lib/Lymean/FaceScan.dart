@@ -1,33 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:human_firewall/Lymean/FaceScan.dart';
+import 'package:human_firewall/Lymean/Fingerprint.dart';
 import 'package:human_firewall/Huycheng/Homepage.dart';
-import 'package:human_firewall/Lymean/Login.dart';
-import 'package:human_firewall/Lymean/signup.dart';
 
-class Fingerprint extends StatefulWidget {
-  const Fingerprint({super.key});
+class FaceScanning extends StatefulWidget {
+  const FaceScanning({super.key});
 
   @override
-  FingerprintVerify createState() => FingerprintVerify();
+  FaceScanningVerify createState() => FaceScanningVerify();
 }
 
-class FingerprintVerify extends State<Fingerprint> {
+class FaceScanningVerify extends State<FaceScanning> {
+  @override
+  void initState() {
+    super.initState();
+    
+    // Add a 1-second delay before navigating to the next page
+    Future.delayed(const Duration(seconds: 1), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomepageScreen()),
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    // Get screen size
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Background overlay effect
+          // Background overlay
           Positioned.fill(
             child: Opacity(
               opacity: 0.30,
-              child: Container(color: Colors.black),
+              child: Container(
+                color: Colors.black,
+              ),
             ),
+          ),
+          
+          // Icon at the top
+          _buildIcon(screenWidth * 0.5 - 30, screenHeight * 0.05, 60, 
+            "https://img.icons8.com/?size=100&id=Qu0nygt1B9eA&format=png&color=000000"
           ),
 
           // Main content
@@ -74,7 +90,7 @@ class FingerprintVerify extends State<Fingerprint> {
           ),
           // Positioned widget for the "Change to Face option" text
           Positioned(
-            left: 85, // Set the desired left position
+            left: 105, // Set the desired left position
             top: 625,
           child: Center(
               child: Row(
@@ -94,11 +110,11 @@ class FingerprintVerify extends State<Fingerprint> {
                       // Navigate directly to Terms and Conditions Screen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FaceScanning()),
+                        MaterialPageRoute(builder: (context) => const Fingerprint()),
                       );
                     },
                     child: const Text(
-                      'Face Scanning',
+                      'Fingerprint',
                       style: TextStyle(
                         color: const Color(0xFF0081D7),
                         fontSize: 24,
@@ -111,36 +127,21 @@ class FingerprintVerify extends State<Fingerprint> {
               ),
             ),
           ),
-          // Clickable icon for navigation
-          _buildClickableIcon(screenWidth * 0.4, screenHeight * 0.1, 80,
-              "https://img.icons8.com/?size=100&id=21602&format=png&color=000000"),
         ],
       ),
     );
   }
 
-  // Custom method to build the clickable icon widget
-  Widget _buildClickableIcon(double left, double top, double size, String url) {
+  Widget _buildIcon(double left, double top, double size, String url) {
     return Positioned(
-      left: left, // Use the left argument for dynamic positioning
-      top: 700, // Use the top argument for dynamic positioning
-      child: GestureDetector(
-        onTap: () {
-          // Navigate to FaceScanning screen when the icon is tapped
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const HomepageScreen()),
-          );
-        },
-        child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(url),
-              fit: BoxFit.cover, // Adjusts the image to cover the area
-            ),
-          ),
+      left: left,
+      top: 80,
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: Image.network(
+          url,
+          fit: BoxFit.cover,
         ),
       ),
     );
