@@ -127,7 +127,7 @@ class FingerprintVerify extends State<Fingerprint> {
           // Navigate to FaceScanning screen when the icon is tapped
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const HomepageScreen()),
+            MaterialPageRoute(builder: (context) => const Categories()),
           );
         },
         child: Container(

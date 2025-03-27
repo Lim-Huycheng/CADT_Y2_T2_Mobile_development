@@ -18,7 +18,7 @@ class FaceScanningVerify extends State<FaceScanning> {
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomepageScreen()),
+        MaterialPageRoute(builder: (context) => const Categories()),
       );
     });
   }
