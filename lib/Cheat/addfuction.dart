@@ -23,26 +23,26 @@ class buildNotificationCard extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: const Color(0xFFEDEDED),
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Stack(
         children: [
           // Profile Picture
-          Positioned(
-            left: 10,
-            top: 17,
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: ShapeDecoration(
-                shape: const OvalBorder(),
-                image: DecorationImage(
-                  image: AssetImage(imagePath), // Image set dynamically
-                  fit: BoxFit.cover,
+              Positioned(
+                left: 5,
+                top: 17,
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle, 
+                    image: DecorationImage(
+                      image: AssetImage(imagePath), // Image set dynamically
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
 
           // Title & Subtitle
           Positioned(
@@ -52,22 +52,22 @@ class buildNotificationCard extends StatelessWidget {
               width: 250,
               child: RichText(
                 text: TextSpan(
-                  style: const TextStyle(fontFamily: 'Source Sans Pro'),
+                  style: const TextStyle(fontFamily: 'SourceSans'),
                   children: [
                     TextSpan(
                       text: title,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                     TextSpan(
                       text: '  $subtitle',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.6),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
@@ -87,7 +87,7 @@ class buildNotificationCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: TextStyle(
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.black.withOpacity(0.5),
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
@@ -97,8 +97,8 @@ class buildNotificationCard extends StatelessWidget {
 
           // Add Icon
           Positioned(
-            right: 10,
-            top: 30,
+            right: 5,
+            top: 20,
             child: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -108,7 +108,7 @@ class buildNotificationCard extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.add, color: Colors.grey),
+              icon: const Icon(Icons.add, color: Color.fromARGB(255, 96, 95, 95)),
               
             ),
           ),

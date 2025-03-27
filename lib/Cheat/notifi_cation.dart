@@ -13,7 +13,7 @@ class Notitest extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Notification',
-            style: TextStyle(fontFamily: 'Source Sans Pro'),
+            style: TextStyle(fontFamily: 'SourceSans',fontSize: 40,color: Colors.black,fontWeight: FontWeight.w600,),
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
@@ -26,38 +26,38 @@ class Notitest extends StatelessWidget {
               subtitle: "posted a news",
               notificationText:
                   "Hello guys !!! Today, I have a really really bad news. New hacker has ...",
-              imagePath: "assets/pic2.jpg",
+              imagePath: "assets/images/profile1.jpg",
             ),
             buildNotificationCard(
               title: "Baby analyze",
               subtitle: "replied your text",
               notificationText: "Thank you, bro sokhcheat for alert us about this important news",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/profile2.jpg",
             ),
             buildNotificationCard(
               title: "Human firewall",
               subtitle: "has update",
               notificationText: "Dos & DDos attack: Our community jsut update Dos and DDos attack",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/logo.jpg",
             ),
             buildNotificationCard(
               title: "Human firewall",
               subtitle: "has update",
               notificationText: "Phishing is the most attack by sending fake email to steal credential.",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/logo.jpg",
             ),
             buildNotificationCard(
               title: "Analyze Thread",
               subtitle: "posted a news",
               notificationText:
                   "FBI has found a new technique about Ransomware. So everyone, ...",
-              imagePath: "assets/pic2.jpg",
+              imagePath: "assets/images/profile1.jpg",
             ),
             buildNotificationCard(
               title: "Baby analyze",
               subtitle: "replied your text",
               notificationText: "Really !!!!!!!! It is so scary",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/profile2.jpg",
             ),
           ],
         ),

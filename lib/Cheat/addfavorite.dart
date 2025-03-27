@@ -13,7 +13,7 @@ class Notitest1 extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Notification',
-            style: TextStyle(fontFamily: 'SourceSans'),
+            style: TextStyle(fontFamily: 'SourceSans',fontSize: 40,color: Colors.black,fontWeight: FontWeight.w600,),
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
@@ -27,19 +27,19 @@ class Notitest1 extends StatelessWidget {
               subtitle: "posted a news",
               notificationText:
                   "Hello guys !!! Today, I have a really really bad news. New hacker has ...",
-              imagePath: "assets/pic2.jpg", 
+              imagePath: "assets/images/profile1.jpg", 
             ),
             buildNotificationCard(
               title: "Baby analyze",
               subtitle: "replied your text",
               notificationText: "Thank you, bro sokhcheat for alert us about this important news",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/profile2.jpg",
             ),
             buildNotificationCard(
               title: "Human firewall",
               subtitle: "has update",
               notificationText: "Dos & DDos attack: Our community jsut update Dos and DDos attack",
-              imagePath: "assets/pic1.jpg",
+              imagePath: "assets/images/logo.jpg",
             ),
             Container(
               color: Colors.blueGrey[150], // Set background color here
@@ -48,7 +48,7 @@ class Notitest1 extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 30, // Increased size for visibility
-                    backgroundImage: AssetImage('../asset/pic2.jpg'), // Ensure image exists in pubspec.yaml
+                    backgroundImage: AssetImage('assets/images/profile1.jpg'), // Ensure image exists in pubspec.yaml
                   ),
                   SizedBox(height: 10), // Proper spacing
                   Text(
@@ -57,7 +57,7 @@ class Notitest1 extends StatelessWidget {
                   ),
                   Divider(),
                   ListTile(
-                    leading: Icon(Icons.favorite, color: Colors.black),
+                    leading: Icon(Icons.favorite, color: Colors.black,size: 30,),
                     title: Text('Add to favorite', style: TextStyle(color: Colors.black)),
                     subtitle: Text('More of your notifications will be like this.'),
                       onTap: () {
@@ -65,7 +65,7 @@ class Notitest1 extends StatelessWidget {
                       },
                   ),
                   ListTile(
-                    leading: Icon(Icons.report_problem, color: Colors.black),
+                    leading: Icon(Icons.report_problem, color: Colors.black,size: 30,),
                     title: Text('Report issue to account user', style: TextStyle(color: Colors.black)),
                     subtitle: Text('This user account is untrustworthy.'),
                       onTap: () {
@@ -73,7 +73,7 @@ class Notitest1 extends StatelessWidget {
                       }, // Add action
                   ),
                   ListTile(
-                    leading: Icon(Icons.block, color: Colors.black),
+                    leading: Icon(Icons.block, color: Colors.black,size: 30,),
                     title: Text('Block account', style: TextStyle(color: Colors.black)),
                     subtitle: Text('Remove user account from your community.'),
                       onTap: () {
