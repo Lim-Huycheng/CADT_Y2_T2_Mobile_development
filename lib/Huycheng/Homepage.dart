@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:human_firewall/Kanya/quizz_category.dart';
 import 'package:human_firewall/Cheat/addfavorite.dart';
-import 'package:human_firewall/Chornay/Community_interface.dart';
+import 'package:human_firewall/Chornay/Community_newfeed.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 150,
+        toolbarHeight: 80,
         title: Row(
           children: [
             const CircleAvatar(
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 200,
+                height: 230,
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: _carouselSlides.length,
