@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'addfavorite.dart';
-import '../Chornay/Community_interface.dart';
+import '../Chornay/Community_newfeed.dart';
 
 class buildNotificationCard extends StatelessWidget {
   final String title;
@@ -38,7 +38,7 @@ class buildNotificationCard extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CommunityInterface(),
+                        builder: (context) => PostFeedPage(),
                       ),
                     );
                   },
@@ -99,7 +99,7 @@ class buildNotificationCard extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CommunityInterface(),
+                      builder: (context) => PostFeedPage(),
                     ),
                   );
                 },
