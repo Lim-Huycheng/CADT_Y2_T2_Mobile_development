@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:human_firewall/Huycheng/Homepage.dart';
 import 'package:human_firewall/Lymean/nav_screen.dart';
 
 class Successful extends StatefulWidget {
