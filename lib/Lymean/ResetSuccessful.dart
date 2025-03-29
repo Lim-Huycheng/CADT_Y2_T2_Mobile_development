@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:human_firewall/Huycheng/Homepage.dart';
+import 'package:human_firewall/Lymean/nav_screen.dart';
 
 class Successful extends StatefulWidget {
   const Successful({super.key});
@@ -17,7 +18,7 @@ class SuccessfulScreen extends State<Successful> {
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const FaceScanning()),
       );
     });
   }
