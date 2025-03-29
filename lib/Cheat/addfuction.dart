@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'addfavorite.dart';
+import '../Chornay/Community_interface.dart';
 
 class buildNotificationCard extends StatelessWidget {
   final String title;
@@ -31,19 +32,29 @@ class buildNotificationCard extends StatelessWidget {
               Positioned(
                 left: 5,
                 top: 17,
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle, 
-                    image: DecorationImage(
-                      image: AssetImage(imagePath), // Image set dynamically
-                      fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: () {
+                    // Navigate to DetailScreen when tapped
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CommunityInterface(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle, 
+                      image: DecorationImage(
+                        image: AssetImage(imagePath), // Image set dynamically
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
               ),
-
           // Title & Subtitle
           Positioned(
             left: 77,
@@ -82,18 +93,30 @@ class buildNotificationCard extends StatelessWidget {
             top: 35,
             child: SizedBox(
               width: 260,
-              child: Text(
-                notificationText,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.5),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to DetailScreen when tapped
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CommunityInterface(),
+                    ),
+                  );
+                },
+                child: Text(
+                  notificationText,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: TextStyle(
+                    color: Colors.black38,  // Changed color to blue to indicate it's clickable
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
           ),
+
 
           // Add Icon
           Positioned(

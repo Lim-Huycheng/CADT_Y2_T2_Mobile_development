@@ -5,6 +5,8 @@ import 'firebase_options.dart';
 import 'package:human_firewall/Lymean/welcome.dart';
 import 'package:human_firewall/Huycheng/Homepage.dart';
 
+import 'Cheat/notifi_cation.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();  
   await Firebase.initializeApp(
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.blue, // Adjust as needed
         ),
       ),
-      home: const QuizApp(),
+      home: const Notitest(),
     );
   }
 }
