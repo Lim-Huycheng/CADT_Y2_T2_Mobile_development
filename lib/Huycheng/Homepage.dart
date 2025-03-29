@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+<<<<<<< HEAD
 import 'package:human_firewall/Kanya/quizz_category.dart';
 import 'package:human_firewall/Cheat/addfavorite.dart';
 import 'package:human_firewall/Chornay/Community_newfeed.dart';
+=======
+import 'package:human_firewall/Cheat/notifi_cation.dart';
+>>>>>>> f978b4eca3ed2d8fa98ca96c83c6f7957a7cf8f5
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,17 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _startCarouselAutoSlide();
+    _startAutoSlide();
   }
 
-  void _startCarouselAutoSlide() {
+  void _startAutoSlide() {
     _carouselTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      if (_currentPage < 3) {
+      if (_currentPage < _carouselSlides.length - 1) {
         _currentPage++;
       } else {
-        _currentPage = 0;
+        _currentPage = 0; // Reset to the first slide
       }
-      
       _pageController.animateToPage(
         _currentPage,
         duration: const Duration(milliseconds: 500),
@@ -44,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController.dispose();
     super.dispose();
   }
+
 
   final List<Map<String, dynamic>> _carouselSlides = [
     {
@@ -79,10 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return WillPopScope(
       onWillPop: () async => false, 
       child: Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 80,
@@ -91,32 +97,71 @@ class _HomeScreenState extends State<HomeScreen> {
             const CircleAvatar(
               radius: 20,
               backgroundImage: NetworkImage('https://randomuser.me/api/portraits/men/1.jpg'),
+=======
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          toolbarHeight: 150,
+          title: Row(
+            children: [
+              const CircleAvatar(
+                radius: 20,
+                backgroundImage: NetworkImage('https://randomuser.me/api/portraits/men/1.jpg'),
+              ),
+              const SizedBox(width: 10),
+              const Text('Hello, Mark Lee!'),
+            ],
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.notifications),
+              onPressed: () {
+                // Navigate to the notification screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Notitest()),
+                );
+              },
             ),
-            const SizedBox(width: 10),
-            const Text('Hello, Mark Lee!'),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Navigate to the settings screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+>>>>>>> f978b4eca3ed2d8fa98ca96c83c6f7957a7cf8f5
+            ),
           ],
         ),
-        actions: [
-          IconButton(icon: const Icon(Icons.notifications), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
-        ],
-      ),
-      body: SingleChildScrollView(
+        body: SingleChildScrollView(
           padding: EdgeInsets.all(isSmallScreen ? 16.0 : 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Adjusting the height of the carousel dynamically
               SizedBox(
+<<<<<<< HEAD
                 height: 230,
+=======
+                height: isSmallScreen ? screenHeight * 0.25 : screenHeight * 0.3, // Adjust height to fit screen
+>>>>>>> f978b4eca3ed2d8fa98ca96c83c6f7957a7cf8f5
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: _carouselSlides.length,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
                   itemBuilder: (context, index) {
                     return _buildCarouselCard(_carouselSlides[index]);
                   },
                 ),
               ),
               const SizedBox(height: 20),
+              // Horizontal list of categories
               SizedBox(
                 height: isSmallScreen ? 220 : 250,
                 child: ListView(
@@ -223,16 +268,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildCarouselCard(Map<String, dynamic> slide) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Stack(
-            children: [
-              Container(
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 8.0), // Reduce horizontal padding if needed
+    child: Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Stack(
+          children: [
+            // Background Image
+            Positioned.fill(
+              child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(slide["image"]),
@@ -240,42 +287,50 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Container(
+            ),
+            // Semi-transparent overlay
+            Positioned.fill(
+              child: Container(
                 color: slide["color"].withOpacity(0.7),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(slide["icon"] as IconData, size: 40, color: Colors.white),
-                    const SizedBox(height: 16),
-                    Text(
-                      slide["title"] as String,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+            ),
+            // Content inside the card
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0), // Adjust vertical padding
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center, // Center the content horizontally
+                children: [
+                  Icon(slide["icon"] as IconData, size: 40, color: Colors.white),
+                  const SizedBox(height: 16),
+                  Text(
+                    slide["title"] as String,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      slide["text"] as String,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                    textAlign: TextAlign.center, // Make title centered
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    slide["text"] as String,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildCategoryCard({
     required String title,

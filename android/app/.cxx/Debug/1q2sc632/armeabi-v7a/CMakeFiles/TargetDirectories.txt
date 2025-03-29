@@ -1,0 +1,2 @@
+D:/LYMIN/Mobile application/For_Push/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/1q2sc632/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/LYMIN/Mobile application/For_Push/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/1q2sc632/armeabi-v7a/CMakeFiles/rebuild_cache.dir
