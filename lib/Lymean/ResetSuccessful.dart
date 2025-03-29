@@ -18,7 +18,7 @@ class SuccessfulScreen extends State<Successful> {
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const FaceScanning()),
+        MaterialPageRoute(builder: (context) => NavScreen()),
       );
     });
   }
