@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:human_firewall/Kanya/quizz_category.dart';
 import 'firebase_options.dart';
 import 'package:human_firewall/Lymean/welcome.dart';
-import 'package:human_firewall/Huycheng/Homepage.dart';
 
 import 'Cheat/notifi_cation.dart';
 
@@ -36,7 +34,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.blue, // Adjust as needed
         ),
       ),
-      home: const Notitest(),
+      home: const Welcome(),
     );
   }
 }
