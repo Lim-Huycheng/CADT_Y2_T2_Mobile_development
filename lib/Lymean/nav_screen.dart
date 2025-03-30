@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:human_firewall/Huycheng/Homepage.dart';
-import 'package:human_firewall/Chornay/Community_interface.dart';
+import 'package:human_firewall/Chornay/Community_newfeed.dart';
 import 'package:human_firewall/Cheat/notifi_cation.dart';
 import 'package:human_firewall/Kanya/quizz_category.dart';
 
@@ -15,7 +15,7 @@ class _NavScreenState extends State<NavScreen> {
 
   List<Widget> pageList = <Widget>[
     HomeScreen(),
-    CommunityInterface(),
+    PostFeedPage(),
     QuizHome(),
     Notitest(),
   ];
