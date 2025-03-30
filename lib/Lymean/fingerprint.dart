@@ -83,7 +83,7 @@ class FingerprintVerify extends State<Fingerprint> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: screenHeight * 0.3, // Move the text up a bit
+            bottom: screenHeight * 0.28, // Move the text up a bit
             child: Center(
               child: GestureDetector(
                 onTap: () {

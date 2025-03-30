@@ -20,24 +20,28 @@ class FaceScanningVerify extends State<FaceScanning> {
 
     // Simulate a delay before showing success and transitioning
     Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        isLoading = false;
-        isSuccess = true; // Show success message
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+          isSuccess = true; // Show success message
+        });
 
-      // Navigate after the popup duration
-      Future.delayed(const Duration(seconds: 1), () {
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            transitionDuration: Duration(milliseconds: 500),
-            pageBuilder: (_, __, ___) => NavScreen(),
-            transitionsBuilder: (_, animation, __, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
-        );
-      });
+        // Navigate after the popup duration
+        Future.delayed(const Duration(seconds: 1), () {
+          if (mounted) {
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 500),
+                pageBuilder: (_, __, ___) => NavScreen(),
+                transitionsBuilder: (_, animation, __, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+              ),
+            );
+          }
+        });
+      }
     });
   }
 
@@ -95,49 +99,7 @@ class FaceScanningVerify extends State<FaceScanning> {
               ],
             ),
           ),
-
-          // "Switch to Face Scanning" Button (Now positioned higher to avoid overlap)
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: screenHeight * 0.3, // Increased the bottom value to add more space
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  // Change to Face Scanning option
-                  Future.delayed(const Duration(seconds: 1), () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const FaceScanning()),
-                    );
-                  });
-                },
-                child: RichText(
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Switch to ",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "Face Scanning",
-                        style: TextStyle(
-                          color: Color(0xFF0081D7),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-
+                
           // Success popup if verification is successful
           if (isSuccess)
             Center(
