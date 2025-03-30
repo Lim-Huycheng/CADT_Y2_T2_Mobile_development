@@ -13,6 +13,8 @@ class QuizState extends State<Quiz> {
   int currentQuestionIndex = 0;
   String selectedAnswer = '';
   bool showResult = false;
+  bool isCorrect = false;
+  int score = 0;
 
   final Map<String, List<Map<String, dynamic>>> questionsByCategory = {
     'Phishing': [
@@ -20,9 +22,9 @@ class QuizState extends State<Quiz> {
         'question': 'What is the primary goal of a phishing attack?',
         'answers': [
           'To overload a server with traffic',
-          'To trick users into revealing sensitive information',
+          'To install malware on a system',
           'To gain unauthorized network access',
-          'To install malware on a system'
+          'To trick users into revealing sensitive information'
         ],
         'correctAnswer': 'To trick users into revealing sensitive information',
         'explanation': 'Phishing attacks deceive users into giving away sensitive data.'
@@ -30,9 +32,9 @@ class QuizState extends State<Quiz> {
       {
         'question': 'Which method is commonly used in phishing emails?',
         'answers': [
-          'Encrypted attachments',
           'Urgent requests for personal information',
           'Digital certificates',
+          'Encrypted attachments',
           'Password managers'
         ],
         'correctAnswer': 'Urgent requests for personal information',
@@ -54,10 +56,10 @@ class QuizState extends State<Quiz> {
       {
         'question': 'What does malware do?',
         'answers': [
-          'Enhance system security',
-          'Cause harm to a system',
+          'Monitor network traffic for security',
           'Improve network performance',
-          'Monitor network traffic for security'
+          'Cause harm to a system',
+          'Enhance system security'
         ],
         'correctAnswer': 'Cause harm to a system',
         'explanation': 'Malware is designed to damage, disrupt, or gain unauthorized access.'
@@ -65,8 +67,8 @@ class QuizState extends State<Quiz> {
       {
         'question': 'Which of the following is a type of malware?',
         'answers': [
-          'Firewall',
           'Ransomware',
+          'Firewall',
           'Antivirus',
           'Virtual Private Network (VPN)'
         ],
@@ -76,10 +78,10 @@ class QuizState extends State<Quiz> {
       {
         'question': 'What is a common way malware spreads?',
         'answers': [
-          'Through software updates',
-          'By clicking on suspicious links',
           'By using strong passwords',
-          'Through firewall logs'
+          'Through software updates',
+          'Through firewall logs',
+          'By clicking on suspicious links'
         ],
         'correctAnswer': 'By clicking on suspicious links',
         'explanation': 'Malware often spreads through malicious links or email attachments.'
@@ -122,9 +124,10 @@ class QuizState extends State<Quiz> {
     ],
   };
 
-  void checkAnswer(String answer) {
+  void checkAnswer() {
     setState(() {
-      selectedAnswer = answer;
+      isCorrect = selectedAnswer == questions[currentQuestionIndex]['correctAnswer'];
+      if (isCorrect) score++;
       showResult = true;
     });
   }
@@ -137,7 +140,10 @@ class QuizState extends State<Quiz> {
         showResult = false;
       });
     } else {
-      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ResultPage(score: score, total: questions.length)),
+      );
     }
   }
 
@@ -179,14 +185,6 @@ class QuizState extends State<Quiz> {
               decoration: BoxDecoration(
                 color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: showResult
-                      ? (selectedAnswer == questions[currentQuestionIndex]['correctAnswer']
-                          ? Colors.green
-                          : Colors.red)
-                      : Colors.transparent,
-                  width: 2,
-                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,32 +195,59 @@ class QuizState extends State<Quiz> {
                   ),
                   SizedBox(height: 10),
                   Column(
-                    children: questions[currentQuestionIndex]['answers'].map<Widget>((answer) {
-                      bool isCorrectAnswer = answer == questions[currentQuestionIndex]['correctAnswer'];
-                      bool isSelectedAnswer = selectedAnswer == answer;
-
-                      return RadioListTile(
+                    children: questions[currentQuestionIndex]['answers'].map<Widget>((String answer) {
+                      return RadioListTile<String>(
                         title: Text(answer),
                         value: answer,
                         groupValue: selectedAnswer,
-                        onChanged: (value) {
-                          if (!showResult) {
-                            checkAnswer(value as String);
-                          }
+                        onChanged: showResult ? null : (value) {
+                          setState(() {
+                            selectedAnswer = value!;
+                          });
                         },
-                        activeColor: isCorrectAnswer ? Colors.green : Colors.grey,
-                        tileColor: isSelectedAnswer
-                            ? (isCorrectAnswer ? Colors.green.shade100 : Colors.red.shade100)
-                            : null,
                       );
                     }).toList(),
                   ),
-                  if (showResult && selectedAnswer != questions[currentQuestionIndex]['correctAnswer'])
+                  if (showResult)
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        'Correct Answer: ${questions[currentQuestionIndex]['correctAnswer']}\n${questions[currentQuestionIndex]['explanation']}',
-                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          isCorrect
+                              ? Text(
+                                  'Correct!',
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                )
+                              : Text(
+                                  'Wrong!',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                          SizedBox(height: 8),
+                          Text(
+                            'The correct answer is: ${questions[currentQuestionIndex]['correctAnswer']}',
+                            style: TextStyle(
+                              color: Colors.blue.shade800,
+                              fontSize: 14,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Explanation: ${questions[currentQuestionIndex]['explanation']}',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
@@ -231,20 +256,64 @@ class QuizState extends State<Quiz> {
             Spacer(),
             Center(
               child: ElevatedButton(
-                onPressed: selectedAnswer.isNotEmpty ? () => nextQuestion(context) : null,
+                onPressed: selectedAnswer.isEmpty
+                    ? null
+                    : showResult
+                        ? () => nextQuestion(context)
+                        : checkAnswer,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.shade700,
-                  disabledBackgroundColor: Colors.blue.shade700,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
                 child: Text(
-                  currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish',
+                  showResult ? 'Next' : 'Confirm Answer',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ResultPage extends StatelessWidget {
+  final int score;
+  final int total;
+
+  const ResultPage({super.key, required this.score, required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quiz Completed'),
+        backgroundColor: Colors.blue.shade700,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.emoji_events, size: 100, color: Colors.amber),
+            SizedBox(height: 20),
+            Text(
+              'Congratulations!',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'You scored $score out of $total!',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue.shade700),
+              child: Text('Return to Home'),
             ),
           ],
         ),

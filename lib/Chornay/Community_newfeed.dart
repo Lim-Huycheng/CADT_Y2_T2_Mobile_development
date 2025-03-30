@@ -289,7 +289,7 @@ class _PostFeedPageState extends State<PostFeedPage> {
     },
     {
       'profileUrl': 'https://img.icons8.com/?size=100&id=97352&format=png&color=000000',
-      'name': 'Chhay Nary',
+      'name': 'Keo Sokanya',
       'date': '3 days ago',
       'title': 'What is ransomware and how to avoid it?',
       'subtitle': 'Ransomware attacks can lock you out of your files...',
