@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Quizz.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:human_firewall/Huycheng/HomePage0.dart';
 
 class QuizHome extends StatefulWidget {
   const QuizHome({super.key});
