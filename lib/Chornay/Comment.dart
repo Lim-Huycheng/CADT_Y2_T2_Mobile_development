@@ -169,7 +169,8 @@ class _CommentPageState extends State<CommentPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: Colors.blue, // Set text color
+                    primary: Colors.blue, // Set background color
+                    onPrimary: Colors.white, // Set text color
                   ),
                   onPressed: _addComment,
                   child: Text(_replyingTo == null ? 'Add Comment' : 'Reply', style: TextStyle(fontSize: 16)),
