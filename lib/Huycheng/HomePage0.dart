@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:human_firewall/Kanya/quizz_category.dart';
-import 'package:human_firewall/Cheat/addfavorite.dart';
-import 'package:human_firewall/Chornay/Community_newfeed.dart';
 import 'package:human_firewall/Cheat/notifi_cation.dart';
 
 class HomeScreen extends StatefulWidget {
