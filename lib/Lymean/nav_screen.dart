@@ -17,7 +17,7 @@ class _NavScreenState extends State<NavScreen> {
     HomeScreen(),
     PostFeedPage(),
     QuizHome(),
-    Notitest(),
+    Notitestification_full(),
   ];
 
   @override

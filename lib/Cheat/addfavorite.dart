@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './addfuction.dart';
 import './notifi_cation.dart';
 
+
 class Notitest1 extends StatefulWidget {
   final String title;
   final String imagePath;
@@ -47,7 +48,7 @@ class _Notitest1State extends State<Notitest1> {
                 Navigator.pop(context);
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const Notitest()), 
+                  MaterialPageRoute(builder: (context) => const Notitestification_full()), 
                 );
               },
               child: const Text(
@@ -95,7 +96,7 @@ class _Notitest1State extends State<Notitest1> {
                 Navigator.pop(context);
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const Notitest()), 
+                  MaterialPageRoute(builder: (context) => const Notitestification_full()), 
                 );
               },
               child: const Text(
@@ -143,7 +144,7 @@ class _Notitest1State extends State<Notitest1> {
                 Navigator.pop(context);
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const Notitest()), 
+                  MaterialPageRoute(builder: (context) => const Notitestification_full()), 
                 );
               },
               child: const Text(
@@ -173,11 +174,15 @@ class _Notitest1State extends State<Notitest1> {
             fontWeight: FontWeight.w600
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {}, 
-            icon: const Icon(Icons.menu))
-        ],
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 25),
+              child: IconButton(
+                onPressed: () {}, 
+                icon: const Icon(Icons.search, size: 35),
+              ),
+            ),
+          ],
       ),
       body: SingleChildScrollView(
         child: Column(
