@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Required for SystemChrome
+import 'package:human_firewall/Cheat/show_history.dart';
+import 'package:human_firewall/Huycheng/HomePage0.dart';
 import 'package:human_firewall/Lymean/welcome.dart';
 
 void main() async {

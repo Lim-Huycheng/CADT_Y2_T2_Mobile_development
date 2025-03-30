@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import './addfuction.dart';
 
-class Showhistory extends StatelessWidget {
-  const Showhistory({super.key});
+class Notitest extends StatelessWidget {
+  const Notitest({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,13 @@ class Showhistory extends StatelessWidget {
             style: TextStyle(fontFamily: 'SourceSans', fontSize: 40, color: Colors.black, fontWeight: FontWeight.w600),
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+            Padding(
+              padding: const EdgeInsets.only(right: 25),
+              child: IconButton(
+                onPressed: () {}, 
+                icon: const Icon(Icons.search, size: 35),
+              ),
+            ),
           ],
         ),
           ),

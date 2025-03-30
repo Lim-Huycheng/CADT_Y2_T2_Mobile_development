@@ -1,0 +1,2 @@
+C:/Users/TUF/Desktop/projecct3/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/1zj434i4/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/TUF/Desktop/projecct3/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/1zj434i4/x86_64/CMakeFiles/rebuild_cache.dir
