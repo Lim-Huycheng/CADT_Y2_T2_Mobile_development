@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:human_firewall/Kanya/quizz_category.dart';
 import 'package:human_firewall/Cheat/addfavorite.dart';
 import 'package:human_firewall/Chornay/Community_newfeed.dart';
-import 'package:human_firewall/Cheat/notifi_cation.dart';
+import 'package:human_firewall/Cheat/noti.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

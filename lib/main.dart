@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:flutter/services.dart'; // Required for SystemChrome
 import 'package:human_firewall/Lymean/welcome.dart';
-import './Huycheng/HomePage0.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();  
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-    
-  );
+  // Ensure Flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Hide the status bar and navigation bar
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
   runApp(const MyApp());
 }
 
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.blue, // Adjust as needed
         ),
       ),
-      home: const HomeScreen(),
+      home: const Welcome(),
     );
   }
 }

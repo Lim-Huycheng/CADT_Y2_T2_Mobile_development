@@ -92,7 +92,7 @@ class Frame1 extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: 20,
-          fontFamily: 'SourceSans',
+          fontFamily: 'SuezOne',
           fontWeight: FontWeight.w700,
         ),
       ),

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:human_firewall/Lymean/TermAndCondition.dart';
-import 'package:human_firewall/Lymean/Verify.dart';
 import 'package:human_firewall/Lymean/Login.dart';
+import 'package:human_firewall/Lymean/fingerprint.dart';
 import 'package:human_firewall/Lymean/homescreen.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -134,7 +134,7 @@ class RegistrationFormState extends State<RegistrationForm> {
                     if (_formKey.currentState!.validate()) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) =>  Verify()),
+                        MaterialPageRoute(builder: (context) =>  Fingerprint()),
                       );
                     }
                   },

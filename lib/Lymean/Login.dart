@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:human_firewall/Lymean/Verify.dart';
 import 'package:human_firewall/Lymean/Signup.dart';
 import 'package:human_firewall/Lymean/ForgetPassword.dart';
+import 'package:human_firewall/Lymean/fingerprint.dart';
 import 'package:human_firewall/Lymean/homescreen.dart';
 
 class LoginForm extends StatefulWidget {
@@ -106,7 +106,7 @@ class LoginFormState extends State<LoginForm> {
                     if (_formKey.currentState!.validate()) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) =>  Verify()),
+                        MaterialPageRoute(builder: (context) =>  Fingerprint()),
                       );
                     }
                   },
