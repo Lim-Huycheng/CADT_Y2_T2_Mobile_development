@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.blue, // Adjust as needed
         ),
       ),
-      home: const QuizApp(),
+      home: const HomeScreen(),
     );
   }
 }

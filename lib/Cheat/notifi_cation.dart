@@ -11,6 +11,10 @@ class Notitest extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: const Text(
             'Notification',
             style: TextStyle(fontFamily: 'SourceSans',fontSize: 40,color: Colors.black,fontWeight: FontWeight.w600,),
