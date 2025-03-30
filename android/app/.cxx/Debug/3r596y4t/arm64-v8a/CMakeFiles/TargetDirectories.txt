@@ -1,0 +1,2 @@
+D:/human_firewall/android/app/.cxx/Debug/3r596y4t/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/human_firewall/android/app/.cxx/Debug/3r596y4t/arm64-v8a/CMakeFiles/rebuild_cache.dir

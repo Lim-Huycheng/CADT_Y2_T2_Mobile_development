@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:human_firewall/Lymean/Fingerprint.dart';
-import 'package:human_firewall/Huycheng/Homepage.dart';
 import 'package:human_firewall/Lymean/nav_screen.dart';
 
 class FaceScanning extends StatefulWidget {

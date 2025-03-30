@@ -1,0 +1,441 @@
+import 'package:flutter/material.dart';
+import 'package:human_firewall/Chornay/CreatePost.dart';
+import 'package:human_firewall/Chornay/PostDetailPage.dart';
+import 'package:human_firewall/Chornay/Comment.dart';
+
+class PostFeedPage extends StatefulWidget {
+  const PostFeedPage({super.key});
+
+  @override
+  _PostFeedPageState createState() => _PostFeedPageState();
+}
+
+class _PostFeedPageState extends State<PostFeedPage> {
+
+  List<Map<String, dynamic>> filteredPosts = [];
+  final TextEditingController _searchController = TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredPosts = List.from(posts);
+    _searchController.addListener(filterPosts);
+  }
+
+  void filterPosts() {
+    setState(() {
+      String query = _searchController.text.toLowerCase();
+      filteredPosts = posts.where((post) {
+        return post['title'].toString().toLowerCase().contains(query) ||
+            post['subtitle'].toString().toLowerCase().contains(query);
+      }).toList();
+    });
+  }
+
+  void _onLike(int index) {
+    setState(() {
+      filteredPosts[index]['isLiked'] = !filteredPosts[index]['isLiked'];
+      filteredPosts[index]['isLiked']
+          ? filteredPosts[index]['likes']++
+          : filteredPosts[index]['likes']--;
+    });
+  }
+
+  void _onShare(int index) {
+    setState(() {
+      filteredPosts[index]['shares']++;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Post Shared!')),
+    );
+  }
+
+  void _addPost(String title, String subtitle, String fullContent) {
+    setState(() {
+      var newPost = {
+        'profileUrl': 'https://img.icons8.com/?size=100&id=r6JKyoxk0mgY&format=png&color=000000',
+        'name': 'New User',
+        'date': 'Just now',
+        'title': title,
+        'subtitle': subtitle,
+        'fullContent': fullContent,
+        'likes': 0,
+        'comments': 0,
+        'shares': 0,
+        'isLiked': false,
+        'commentsList': [],
+        'isOwner': true, 
+      };
+
+      posts.insert(0, newPost);
+      filteredPosts = List.from(posts);
+    });
+  }
+
+  void _deletePost(int index) {
+    setState(() {
+      posts.removeAt(index);
+      filteredPosts = List.from(posts);
+    });
+  }
+
+  void _editPost(int index, String title, String subtitle, String fullContent) {
+    setState(() {
+      filteredPosts[index]['title'] = title;
+      filteredPosts[index]['subtitle'] = subtitle;
+      filteredPosts[index]['fullContent'] = fullContent;
+
+      posts[index] = filteredPosts[index];
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 25.0),
+          child: Center(
+            child: const Text(
+              'Community',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: IconButton(
+              icon: const Icon(Icons.search, color: Colors.white),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: PostSearchDelegate(posts: posts, onSearch: filterPosts),
+                );
+              },
+            ),
+          ),
+        ],
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
+      ),
+
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : filteredPosts.isEmpty
+              ? const Center(child: Text('No posts yet. Create one!'))
+              : ListView.builder(
+                  itemCount: filteredPosts.length,
+                  itemBuilder: (context, index) {
+                    final post = filteredPosts[index];
+                    post['isOwner'] ??= false;
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PostDetailPage(post: post),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                        elevation: 6, // Added shadow for the card
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: NetworkImage(post['profileUrl']),
+                                    radius: 20,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(post['name'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                  const Spacer(),
+                                  Text(post['date'], style: const TextStyle(color: Colors.grey)),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Text(post['title'], style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                              const SizedBox(height: 4),
+                              Text(post['subtitle'], style: const TextStyle(fontSize: 16, color: Colors.grey)),
+                              const SizedBox(height: 12),
+                              Row(
+                                children: [
+                                  // Like button and count
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(
+                                            post['isLiked'] ? Icons.thumb_up : Icons.thumb_up_off_alt,
+                                            color: post['isLiked'] ? Colors.blue : null,
+                                          ),
+                                          onPressed: () => _onLike(index),
+                                        ),
+                                        Text('${post['likes']}'),
+                                      ],
+                                    ),
+                                  ),
+                                  // Comment button and count
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: const Icon(Icons.comment),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => CommentPage(post: post),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        Text('${post['comments']}'),
+                                      ],
+                                    ),
+                                  ),
+                                  // Share button and count
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                          icon: const Icon(Icons.share),
+                                          onPressed: () => _onShare(index),
+                                        ),
+                                        Text('${post['shares']}'),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              // Edit and Delete buttons
+                              post['isOwner']
+                                  ? Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        IconButton(
+                                          icon: const Icon(Icons.edit, color: Colors.blue),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => CreatePostPage(
+                                                  post: post, 
+                                                  isEdit: true, 
+                                                  index: index, 
+                                                ),
+                                              ),
+                                            ).then((updatedPost) {
+                                              if (updatedPost != null) {
+                                                _editPost(index, updatedPost['title'], updatedPost['subtitle'], updatedPost['fullContent']);
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        IconButton(
+                                          icon: const Icon(Icons.delete, color: Colors.red),
+                                          onPressed: () {
+                                            _showDeleteConfirmationDialog(index);
+                                          },
+                                        ),
+                                      ],
+                                    )
+                                  : Container(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          setState(() {
+            isLoading = true;
+          });
+          final newPost = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreatePostPage()),
+          );
+          setState(() {
+            isLoading = false;
+          });
+          if (newPost != null) {
+            _addPost(newPost['title'], newPost['subtitle'], newPost['fullContent']);
+          }
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 30,
+        ),
+        backgroundColor: const Color(0xFF0081D7),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+    );
+  }
+
+  void _showDeleteConfirmationDialog(int index) {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Prevent tapping outside to dismiss
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0), // Rounded corners
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Delete Post?',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center, // Center title
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Are you sure you want to delete this post?',
+                  textAlign: TextAlign.center, // Center message
+                ),
+                const SizedBox(height: 20),
+                
+                // Buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space between buttons
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(color: Colors.black87),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          _deletePost(index);
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'Delete',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class PostSearchDelegate extends SearchDelegate {
+  final List<Map<String, dynamic>> posts;
+  final Function onSearch;
+
+  PostSearchDelegate({required this.posts, required this.onSearch});
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+          onSearch();
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final filteredPosts = posts.where((post) {
+      return post['title'].toString().toLowerCase().contains(query.toLowerCase()) ||
+          post['subtitle'].toString().toLowerCase().contains(query.toLowerCase());
+    }).toList();
+
+    if (filteredPosts.isEmpty) {
+      return Center(
+        child: Text(
+          'No results found for "$query"',
+          style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+        ),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: filteredPosts.length,
+      itemBuilder: (context, index) {
+        final post = filteredPosts[index];
+        return ListTile(
+          title: Text(post['title']),
+          subtitle: Text(post['subtitle']),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PostDetailPage(post: post),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // Show the same results as buildResults
+    return buildResults(context);
+  }
+}

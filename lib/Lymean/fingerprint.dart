@@ -92,7 +92,7 @@ class FingerprintVerify extends State<Fingerprint> {
                       // Navigate directly to Terms and Conditions Screen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => NavScreen()),
+                        MaterialPageRoute(builder: (context) => FaceScanning()),
                       );
                     },
                     child: const Text(

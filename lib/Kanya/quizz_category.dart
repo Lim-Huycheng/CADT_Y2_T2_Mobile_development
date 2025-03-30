@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Quizz.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:human_firewall/Huycheng/Homepage.dart';
 
 class QuizHome extends StatefulWidget {
   const QuizHome({super.key});
@@ -17,10 +15,29 @@ class QuizHomeState extends State<QuizHome> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Quiz', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: Colors.blue.shade700,
-        toolbarHeight: 100,
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 25.0),
+          child: Center(
+            child: const Text(
+              'Quiz',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

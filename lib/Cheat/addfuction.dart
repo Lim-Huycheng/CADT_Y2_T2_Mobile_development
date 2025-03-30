@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'addfavorite.dart';
+import '../Chornay/Community_newfeed.dart';
 
 class buildNotificationCard extends StatelessWidget {
   final String title;
@@ -14,8 +15,7 @@ class buildNotificationCard extends StatelessWidget {
     required this.notificationText,
     required this.imagePath,
   });
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return Container(
       width: 394,
@@ -28,22 +28,32 @@ class buildNotificationCard extends StatelessWidget {
       child: Stack(
         children: [
           // Profile Picture
-              Positioned(
-                left: 5,
-                top: 17,
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle, 
-                    image: DecorationImage(
-                      image: AssetImage(imagePath), // Image set dynamically
-                      fit: BoxFit.cover,
-                    ),
+          Positioned(
+            left: 5,
+            top: 17,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PostFeedPage(),  // Make sure PostFeedPage is properly imported
+                  ),
+                );
+              },
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-
+            ),
+          ),
+          
           // Title & Subtitle
           Positioned(
             left: 77,
@@ -82,14 +92,24 @@ class buildNotificationCard extends StatelessWidget {
             top: 35,
             child: SizedBox(
               width: 260,
-              child: Text(
-                notificationText,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.5),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PostFeedPage(),
+                    ),
+                  );
+                },
+                child: Text(
+                  notificationText,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.38),  // Fixed color opacity syntax
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
@@ -104,12 +124,14 @@ class buildNotificationCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Notitest1(),
+                    builder: (context) => Notitest1(title: title, imagePath: imagePath),  // Consistent parameters
                   ),
                 );
               },
-              icon: const Icon(Icons.add, color: Color.fromARGB(255, 96, 95, 95)),
-              
+              icon: const Icon(
+                Icons.add, 
+                color: Color.fromARGB(255, 96, 95, 95),
+              ),
             ),
           ),
         ],

@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 class TermAndConditions extends StatefulWidget {
@@ -178,13 +177,9 @@ class _TermAndConditionsState extends State<TermAndConditions> {  // Fixed the s
                     TextSpan(
                       text:
                           '   - Violate any applicable laws or regulations.\n'
-                          '   - Post or share any harmful, defamatory, or illegal\n'
-                          '   content.\n'
-                          '   - Engage in spamming, phishing, or other fraudulent\n'
-                          '   activities.\n'
-                          '   - Use the App for any malicious purpose, including\n'
-                          '   spreading malware, viruses, or other harmful\n'
-                          '   software.\n',
+                          '   - Post or share any harmful, defamatory, or illegal content.\n'
+                          '   - Engage in spamming, phishing, or other fraudulent activities.\n'
+                          '   - Use the App for any malicious purpose, including spreading malware, viruses, or other harmful software.\n',
                       style: normalTextStyle(),
                     ),
                     TextSpan(
