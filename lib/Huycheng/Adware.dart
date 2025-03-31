@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
 import 'Homepage.dart';
 
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
-
 class AdwareScreen extends StatelessWidget {
-  const AdwareScreen ({super.key});
+  const AdwareScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Phishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const PhishingInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
