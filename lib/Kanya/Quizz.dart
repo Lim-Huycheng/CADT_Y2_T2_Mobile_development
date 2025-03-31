@@ -166,95 +166,113 @@ class QuizState extends State<Quiz> {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(60),
+        padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Question ${currentQuestionIndex + 1} of ${questions.length}',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Question ${currentQuestionIndex + 1} of ${questions.length}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.blueAccent),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Choose only one correct answer!',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87),
+                ),
+              ],
             ),
             SizedBox(height: 20),
-            Text(
-              'Choose only one correct answer!',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Container(
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    questions[currentQuestionIndex]['question'],
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(13),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 10),
-                  Column(
-                    children: questions[currentQuestionIndex]['answers'].map<Widget>((String answer) {
-                      return RadioListTile<String>(
-                        title: Text(answer),
-                        value: answer,
-                        groupValue: selectedAnswer,
-                        onChanged: showResult ? null : (value) {
-                          setState(() {
-                            selectedAnswer = value!;
-                          });
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  if (showResult)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          isCorrect
-                              ? Text(
-                                  'Correct!',
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        questions[currentQuestionIndex]['question'],
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                      SizedBox(height: 10),
+                      Column(
+                        children: questions[currentQuestionIndex]['answers'].map<Widget>((String answer) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: RadioListTile<String>(
+                              title: Text(answer, style: TextStyle(fontSize: 16, color: Colors.black)),
+                              value: answer,
+                              groupValue: selectedAnswer,
+                              onChanged: showResult ? null : (value) {
+                                setState(() {
+                                  selectedAnswer = value!;
+                                });
+                              },
+                              activeColor: Colors.blueAccent, // Accent color for the selected answer
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                      if (showResult)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: isCorrect ? Colors.green.shade100 : Colors.red.shade100,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  isCorrect ? 'Correct!' : 'Wrong!',
                                   style: TextStyle(
-                                    color: Colors.green,
+                                    color: isCorrect ? Colors.green : Colors.red,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 14,
+                                    fontSize: 16,
                                   ),
-                                )
-                              : Text(
-                                  'Wrong!',
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  'The correct answer is: ${questions[currentQuestionIndex]['correctAnswer']}',
                                   style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue.shade800,
                                     fontSize: 14,
                                   ),
                                 ),
-                          SizedBox(height: 8),
-                          Text(
-                            'The correct answer is: ${questions[currentQuestionIndex]['correctAnswer']}',
-                            style: TextStyle(
-                              color: Colors.blue.shade800,
-                              fontSize: 14,
+                                SizedBox(height: 5),
+                                Text(
+                                  'Explanation: ${questions[currentQuestionIndex]['explanation']}',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Explanation: ${questions[currentQuestionIndex]['explanation']}',
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            Spacer(),
-            Center(
+            SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
               child: ElevatedButton(
                 onPressed: selectedAnswer.isEmpty
                     ? null
@@ -280,6 +298,7 @@ class QuizState extends State<Quiz> {
     );
   }
 }
+
 
 class ResultPage extends StatelessWidget {
   final int score;

@@ -44,11 +44,11 @@ class QuizHomeState extends State<QuizHome> {
         children: [
           SizedBox(height: 50),
           Image.asset(
-            'assets/images/Category.jpg', // Replace with the correct image path
-            width: 200,  // Adjust the width if needed
-            height: 150, // Adjust the height if needed
+            'assets/images/Category.jpg',
+            width: 200,
+            height: 150,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Text(
             "Let's test your knowledge",
             style: TextStyle(
@@ -58,21 +58,21 @@ class QuizHomeState extends State<QuizHome> {
           ),
           SizedBox(height: 10),
           Text("Choose a Topic below"),
-          SizedBox(height: 20),
+          SizedBox(height: 45),
           QuizTopicButton(
             text: "Social Engineering",
             icon: Icons.email,
-            category: 'Phishing', // Passing the category name
+            category: 'Phishing',
           ),
           QuizTopicButton(
             text: "Malware",
             icon: Icons.bug_report,
-            category: 'Malware', // Passing the category name
+            category: 'Malware',
           ),
           QuizTopicButton(
             text: "Network Attack",
             icon: Icons.security,
-            category: 'Network Attack', // Passing the category name
+            category: 'Network Attack',
           ),
         ],
       ),
@@ -90,15 +90,17 @@ class QuizTopicButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 40),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.blue),
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: Colors.blue, width: 2),
           ),
+          shadowColor: Colors.blueAccent,
+          elevation: 5,
         ),
         onPressed: () {
           Navigator.push(
@@ -109,9 +111,9 @@ class QuizTopicButton extends StatelessWidget {
           );
         },
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, // Align the content to the start
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: Colors.black),
+            Icon(icon, color: Colors.blueAccent),
             SizedBox(width: 10),
             Text(
               text,
@@ -140,33 +142,33 @@ class StartQuizPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Quiz', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 23)),
         centerTitle: true,
-        backgroundColor: Colors.blue.shade700, // Same as Category page
-        toolbarHeight: 100, // Match the header height from Category page
+        backgroundColor: Colors.blue.shade700,
+        toolbarHeight: 100,
       ),
-      body: Center( // Centering the entire content
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/quiz_time.jpg', // Replace with your image path
+              'assets/images/quiz_time.jpg',
               width: 400,
-              height: 350,
+              height: 400,
             ),
-            
+            SizedBox(height: 20),
             Text(
               "Start Quizzes!",
               style: TextStyle(
-                fontSize: 35, // Increased font size
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
+                color: Colors.blue.shade900,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to the Quiz Page with the selected category
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -175,19 +177,21 @@ class StartQuizPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 30), // Increased vertical padding
-                  backgroundColor: Colors.blue.shade700, // Blue background
+                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 50),
+                  backgroundColor: const Color(0xFF0081D7),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  minimumSize: Size(200, 60), // Set a fixed minimum size for the button
+                  shadowColor: Colors.blueAccent,
+                  elevation: 6,
+                  minimumSize: Size(180, 50),
                 ),
                 child: Text(
                   "Start Quiz",
                   style: TextStyle(
-                    fontSize: 22, // Increased font size for better visibility
-                    fontWeight: FontWeight.bold, // Bold text
-                    color: Colors.white, // White text
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),

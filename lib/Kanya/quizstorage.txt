@@ -1,0 +1,107 @@
+final Map<String, List<Map<String, dynamic>>> questionsByCategory = {
+    'Phishing': [
+      {
+        'question': 'What is the primary goal of a phishing attack?',
+        'answers': [
+          'To overload a server with traffic',
+          'To install malware on a system',
+          'To gain unauthorized network access',
+          'To trick users into revealing sensitive information'
+        ],
+        'correctAnswer': 'To trick users into revealing sensitive information',
+        'explanation': 'Phishing attacks deceive users into giving away sensitive data.'
+      },
+      {
+        'question': 'Which method is commonly used in phishing emails?',
+        'answers': [
+          'Urgent requests for personal information',
+          'Digital certificates',
+          'Encrypted attachments',
+          'Password managers'
+        ],
+        'correctAnswer': 'Urgent requests for personal information',
+        'explanation': 'Phishing emails often create urgency to trick users into sharing data.'
+      },
+      {
+        'question': 'How can you identify a phishing website?',
+        'answers': [
+          'Secure HTTPS connection',
+          'Misspelled URL and poor design',
+          'Official company logo',
+          'Detailed privacy policy'
+        ],
+        'correctAnswer': 'Misspelled URL and poor design',
+        'explanation': 'Phishing sites often have misspelled URLs and low-quality design.'
+      },
+    ],
+    'Malware': [
+      {
+        'question': 'What does malware do?',
+        'answers': [
+          'Monitor network traffic for security',
+          'Improve network performance',
+          'Cause harm to a system',
+          'Enhance system security'
+        ],
+        'correctAnswer': 'Cause harm to a system',
+        'explanation': 'Malware is designed to damage, disrupt, or gain unauthorized access.'
+      },
+      {
+        'question': 'Which of the following is a type of malware?',
+        'answers': [
+          'Ransomware',
+          'Firewall',
+          'Antivirus',
+          'Virtual Private Network (VPN)'
+        ],
+        'correctAnswer': 'Ransomware',
+        'explanation': 'Ransomware encrypts files and demands payment for the decryption key.'
+      },
+      {
+        'question': 'What is a common way malware spreads?',
+        'answers': [
+          'By using strong passwords',
+          'Through software updates',
+          'Through firewall logs',
+          'By clicking on suspicious links'
+        ],
+        'correctAnswer': 'By clicking on suspicious links',
+        'explanation': 'Malware often spreads through malicious links or email attachments.'
+      },
+    ],
+    'Network Attack': [
+      {
+        'question': 'What is a common network attack?',
+        'answers': [
+          'Distributed Denial of Service (DDoS)',
+          'Updating firewall rules',
+          'Installing security patches',
+          'Encrypting user passwords'
+        ],
+        'correctAnswer': 'Distributed Denial of Service (DDoS)',
+        'explanation': 'A DDoS attack floods a network with traffic to disrupt services.'
+      },
+      {
+        'question': 'Which tool is commonly used in network attacks?',
+        'answers': [
+          'Wireshark',
+          'Ping',
+          'Nmap',
+          'Task Manager'
+        ],
+        'correctAnswer': 'Nmap',
+        'explanation': 'Nmap is used to discover hosts and services on a network, often in attacks.'
+      },
+      {
+        'question': 'What is the purpose of a man-in-the-middle (MITM) attack?',
+        'answers': [
+          'To enhance network performance',
+          'To intercept and modify communication',
+          'To secure data transmission',
+          'To monitor network bandwidth'
+        ],
+        'correctAnswer': 'To intercept and modify communication',
+        'explanation': 'MITM attacks intercept communication to steal or manipulate data.'
+      },
+    ],
+  };
