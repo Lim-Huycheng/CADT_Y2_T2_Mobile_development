@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:human_firewall/Lymean/TermAndCondition.dart';
 import 'package:human_firewall/Lymean/Login.dart';
-import 'package:human_firewall/Lymean/fingerprint.dart';
 import 'package:human_firewall/Lymean/homescreen.dart';
 
 class RegistrationForm extends StatefulWidget {
@@ -18,43 +17,41 @@ class RegistrationFormState extends State<RegistrationForm> {
   bool _isLoading = false; // Loading state for registration
 
   void _validateAndSubmit() async {
-  setState(() {
-    _autoValidate = true;
-  });
-
-  if (_formKey.currentState!.validate()) {
     setState(() {
-      _isLoading = true; // Start loading
+      _autoValidate = true;
     });
 
-    try {
-      // Simulate backend API call
-      await Future.delayed(const Duration(seconds: 2));
-
-      // On success, navigate to CombinedGroup and remove all previous routes
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const CombinedGroup()), // Navigate to CombinedGroup
-        (route) => false, // This removes all previous pages from the stack
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registration Successful!')),
-      );
-    } catch (e) {
-      // Handle error (e.g., username/email already exists)
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
-    } finally {
+    if (_formKey.currentState!.validate()) {
       setState(() {
-        _isLoading = false; // Stop loading
+        _isLoading = true; // Start loading
       });
+
+      try {
+        // Simulate backend API call
+        await Future.delayed(const Duration(seconds: 2));
+
+        // On success, navigate directly to HomeScreen (auto-login)
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const CombinedGroup()), // Navigate to HomeScreen after registration
+          (route) => false, // Remove all previous routes
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Registration Successful!')),
+        );
+      } catch (e) {
+        // Handle error (e.g., username/email already exists)
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false; // Stop loading
+        });
+      }
     }
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,14 +96,14 @@ class RegistrationFormState extends State<RegistrationForm> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                 InkWell(
-                  onTap: () {
-                    // Navigate directly to Terms and Conditions Screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const TermAndConditions()),
-                    );
-                  },
+                  InkWell(
+                    onTap: () {
+                      // Navigate directly to Terms and Conditions Screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TermAndConditions()),
+                      );
+                    },
                     child: const Text(
                       'Terms and Conditions of Use',
                       style: TextStyle(
@@ -129,15 +126,7 @@ class RegistrationFormState extends State<RegistrationForm> {
                 width: 350,  // Set width to 389 for consistent sizing
                 height: 55,
                 child: ElevatedButton(
-                  onPressed: _isLoading ? null : () {
-                    // Only navigate when the form is valid
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  Fingerprint()),
-                      );
-                    }
-                  },
+                  onPressed: _isLoading ? null : _validateAndSubmit,  // Use the method here
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF0081D7),
                     minimumSize: const Size(350, 55),
@@ -400,15 +389,15 @@ class Group19State extends State<Group19> {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
-              color: Colors.red, // Show red border on error
+              color: Colors.red,
               width: 1.8,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: const BorderSide(
-              color: Colors.red, // Show red border on error when focused
-              width: 2.0,
+              color: Colors.red,
+              width: 1.8,
             ),
           ),
           suffixIcon: icon,

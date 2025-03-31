@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:human_firewall/Chornay/Profile.dart';
 import 'dart:async';
 import 'phishing.dart';
 import 'Vishing.dart';
@@ -118,12 +119,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              const Text(
-                'Hello, Mark Lee!',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()), // Change this to your desired screen
+                  );
+                },
+                child: const Text(
+                  'Hello, Mark Lee!',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
             ],
