@@ -1,0 +1,2 @@
+C:/Users/Chhay Lymean/Downloads/test/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/18622j2r/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Chhay Lymean/Downloads/test/CADT_Y2_T2_Mobile_development/android/app/.cxx/Debug/18622j2r/armeabi-v7a/CMakeFiles/rebuild_cache.dir
