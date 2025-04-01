@@ -13,7 +13,7 @@ import 'MITM.dart';
 import 'Rogue _AP.dart';
 import 'pretexting.dart';
 import 'ransomware.dart';
-import 'package:human_firewall/Cheat/notifi_cation.dart';
+import 'package:human_firewall/Cheat/noti.dart';
 import 'pw_cracking.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Notitestification_full()),
+                  MaterialPageRoute(builder: (context) => const Notitest()),
                 );
               },
             ),
