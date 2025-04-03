@@ -23,7 +23,7 @@ class DdosInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Dos Awareness',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class DdosInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Dos',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

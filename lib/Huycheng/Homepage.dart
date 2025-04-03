@@ -226,9 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       
         child: _buildCategoryCard(
           title: 'Phshing',
-          color: Colors.orange,
+          // color: Colors.orange,
           icon: Icons.people,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://cdn.pixabay.com/photo/2018/05/11/12/59/phishing-3390518_1280.jpg',
         ),
       ),
       GestureDetector(
@@ -240,9 +240,9 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: _buildCategoryCard(
           title: 'Vishing',
-          color: Colors.red,
+          // color: Colors.red,
           icon: Icons.link,
-          imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://timely-benefit-e63d540317.media.strapiapp.com/Picture_1_Phishing_vs_Vishing_vs_Smishing_Key_Differences_a2c88f0733.jpg',
         ),
       ),
       GestureDetector(
@@ -254,9 +254,9 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: _buildCategoryCard(
           title: 'Pretexting',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtlUFQd_3TtVsaKsY6C3rtfpUtpljWFqrhZA&s',
         ),
       ),
       GestureDetector(
@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: _buildCategoryCard(
           title: 'Smishing',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
           imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
         ),
@@ -296,9 +296,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Virus',
-          color: Colors.orange,
+          // color: Colors.orange,
           icon: Icons.people,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ),
       ),
       GestureDetector(
@@ -310,9 +310,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Trojan Horse',
-          color: Colors.red,
+          // color: Colors.red,
           icon: Icons.link,
-          imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7UDo0V6pClRGklnvosxyArKFvO2ERuiK4w&s',
         ),
       ),
       GestureDetector(
@@ -324,9 +324,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Ransomware',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://images.unsplash.com/photo-1618060932014-4deda4932554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ),
       ),
       GestureDetector(
@@ -338,7 +338,7 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Adware',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
           imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
         ),
@@ -366,9 +366,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Dos&Ddos',
-          color: Colors.orange,
+          // color: Colors.orange,
           icon: Icons.people,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://images.unsplash.com/photo-1504203700686-f21e703e5f1c?q=80&w=2083&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ),
       ),
       GestureDetector(
@@ -380,9 +380,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Rogue Access Point',
-          color: Colors.red,
+          // color: Colors.red,
           icon: Icons.link,
-          imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIRFu4Zi9NVum29SmKcCepVN4ATCll3o4Z8Q&s',
         ),
       ),
       GestureDetector(
@@ -394,9 +394,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Man In The Middle',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://discover.strongdm.com/hubfs/main-in-the-middle-attack-mitm.jpg',
         ),
       ),
       GestureDetector(
@@ -408,9 +408,9 @@ SizedBox(
         },
         child: _buildCategoryCard(
           title: 'Password Cracking',
-          color: Colors.purple,
+          // color: Colors.purple,
           icon: Icons.bug_report,
-          imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+          imageUrl: 'https://images.unsplash.com/photo-1504203700686-f21e703e5f1c?q=80&w=2083&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ),
       ),
     ],
@@ -523,61 +523,72 @@ SizedBox(
   );
 }
 
-  Widget _buildCategoryCard({
-    required String title,
-    required Color color,
-    required IconData icon,
-    String? imageUrl,
-    double width = 160,
-  }) {
-    return Container(
-      width: width,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Stack(
-            children: [
-              if (imageUrl != null)
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(imageUrl),
-                      fit: BoxFit.cover,
-                    ),
+Widget _buildCategoryCard({
+  required String title,
+  required IconData icon,
+  String? imageUrl,
+  double width = 160,
+}) {
+  return Container(
+    width: width,
+    margin: const EdgeInsets.symmetric(horizontal: 8),
+    child: Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      clipBehavior: Clip.antiAlias, // Ensure clean clipping of the image
+      child: Stack(
+        children: [
+          // Image background
+          if (imageUrl != null)
+            SizedBox.expand( // Forces the image to expand to fill available space
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover, // Cover the entire space while maintaining aspect ratio
+                alignment: Alignment.center, // Center the image
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: Colors.grey[300], // Fallback if image fails to load
+                ),
+              ),
+            ),
+          // Gradient overlay for better text visibility
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.7),
+                ],
+              ),
+            ),
+          ),
+          // Content
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 40, color: Colors.white),
+                const SizedBox(height: 10),
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
                   ),
                 ),
-              Container(
-                color: imageUrl != null ? color.withOpacity(0.7) : color,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(icon, size: 40, color: Colors.white),
-                    const SizedBox(height: 10),
-                    Text(
-                      title,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildActivityItem({
     required IconData icon,

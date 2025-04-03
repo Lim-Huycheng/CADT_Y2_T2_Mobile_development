@@ -25,12 +25,12 @@ class _SearchState extends State<Search> {
     {
       'title': 'Phishing',
       'screen': const PhishingScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://cdn.pixabay.com/photo/2018/05/11/12/59/phishing-3390518_1280.jpg',
     },
     {
       'title': 'Vishing',
       'screen': const VishingScreen(),
-      'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://timely-benefit-e63d540317.media.strapiapp.com/Picture_1_Phishing_vs_Vishing_vs_Smishing_Key_Differences_a2c88f0733.jpg',
     },
     {
       'title': 'Smishing',
@@ -40,17 +40,17 @@ class _SearchState extends State<Search> {
     {
       'title': 'Pretexting',
       'screen': const PretextingScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtlUFQd_3TtVsaKsY6C3rtfpUtpljWFqrhZA&s',
     },
     {
       'title': 'Virus',
       'screen': const VirusScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       'title': 'Trojan Horse',
       'screen': const TrojanHorseScreen(),
-      'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7UDo0V6pClRGklnvosxyArKFvO2ERuiK4w&s',
     },
     {
       'title': 'Adware',
@@ -60,27 +60,27 @@ class _SearchState extends State<Search> {
     {
       'title': 'Denial of Service (DoS)',
       'screen': const DdosScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://images.unsplash.com/photo-1504203700686-f21e703e5f1c?q=80&w=2083&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       'title': 'Man-in-the-Middle (MITM)',
       'screen': const ManInTheMiddleScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://discover.strongdm.com/hubfs/main-in-the-middle-attack-mitm.jpg',
     },
     {
       'title': 'Rogue Access Point',
       'screen': const RogueAccessPointScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIRFu4Zi9NVum29SmKcCepVN4ATCll3o4Z8Q&s',
     },
     {
       'title': 'Ransomware',
       'screen': const RansomwareScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://images.unsplash.com/photo-1618060932014-4deda4932554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       'title': 'Password Cracking',
       'screen': const PasswordCrackingScreen(),
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      'image': 'https://images.unsplash.com/photo-1504203700686-f21e703e5f1c?q=80&w=2083&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ];
 

@@ -130,7 +130,7 @@ class FingerprintVerify extends State<Fingerprint> {
                 // Simulate the fingerprint scan verification
                 if (mounted) {
                   setState(() {
-                    isVerified = true; // Verification is successful when icon is tapped
+                    isVerified = true; //x Verification is successful when icon is tapped
                   });
 
                   // Navigate to the next screen after a short delay

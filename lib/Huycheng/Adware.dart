@@ -23,7 +23,7 @@ class AdwareInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Adware Awareness',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
