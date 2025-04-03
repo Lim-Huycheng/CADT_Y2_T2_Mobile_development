@@ -11,7 +11,6 @@ import 'Adware.dart';
 import 'Dos.dart';
 import 'MITM.dart';
 import 'Rogue _AP.dart';
-import 'pretexting.dart';
 import 'ransomware.dart';
 import 'package:human_firewall/Cheat/noti.dart';
 import 'pw_cracking.dart';
