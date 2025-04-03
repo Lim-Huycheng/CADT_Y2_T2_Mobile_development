@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:human_firewall/Huycheng/HomePage.dart';
 import 'package:human_firewall/Chornay/Community_newfeed.dart'; // Main community feed page
+import 'package:human_firewall/Huycheng/search.dart';
 import 'package:human_firewall/Kanya/quizz_category.dart';
 
 class NavScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class _NavScreenState extends State<NavScreen> {
     HomeScreen(),           // Home screen
     PostFeedPage(),         // Main community feed page
     QuizHome(),             // Quiz home page
+    Search(),
   ];
 
   @override
@@ -39,9 +41,10 @@ class _NavScreenState extends State<NavScreen> {
           });
         },
         items: [
-          Icon(Icons.home, color: Colors.white, size: 35),  // Home icon
-          Icon(Icons.people, color: Colors.white, size: 35),  // Community icon
-          Icon(Icons.quiz_outlined, color: Colors.white, size: 35),  // Quiz icon
+          Icon(Icons.home, color: Colors.white, size: 30),  // Home icon
+          Icon(Icons.people, color: Colors.white, size: 30),  // Community icon
+          Icon(Icons.quiz_outlined, color: Colors.white, size: 30),  // Quiz icon
+          Icon(Icons.search, color: Colors.white, size: 30),
         ],
       ),
     );

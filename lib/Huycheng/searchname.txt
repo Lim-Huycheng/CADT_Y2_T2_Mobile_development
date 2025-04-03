@@ -1,0 +1,62 @@
+List<Map<String, dynamic>> _categoryList = [
+    {
+      'title': 'Phishing',
+      'screen': const PhishingScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Vishing',
+      'screen': const VishingScreen(),
+      'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Smishing',
+      'screen': const SmishingScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Pretexting',
+      'screen': const PretextingScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Virus',
+      'screen': const VirusScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Trojan Horse',
+      'screen': const TrojanHorseScreen(),
+      'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Adware',
+      'screen': const AdwareScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Denial of Service (DoS)',
+      'screen': const DdosScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Man-in-the-Middle (MITM)',
+      'screen': const ManInTheMiddleScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Rogue Access Point',
+      'screen': const RogueAccessPointScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Ransomware',
+      'screen': const RansomwareScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+    {
+      'title': 'Password Cracking',
+      'screen': const PasswordCrackingScreen(),
+      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    },
+  ];

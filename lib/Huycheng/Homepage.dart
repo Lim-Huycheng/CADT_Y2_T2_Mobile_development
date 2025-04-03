@@ -109,11 +109,11 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               const SizedBox(width: 16),
               CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.blue.shade700,
-              backgroundImage: NetworkImage(
-                  'https://img.icons8.com/?size=100&id=WyivBeZwTRk6&format=png&color=000000'),
-            ),
+                radius: 25,
+                backgroundColor: Colors.blue.shade700,
+                backgroundImage: NetworkImage(
+                    'https://img.icons8.com/?size=100&id=WyivBeZwTRk6&format=png&color=000000'),
+              ),
               const SizedBox(width: 12),
               GestureDetector(
                 onTap: () {
@@ -149,7 +149,12 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.settings),
               iconSize: 20, 
               color: Colors.blueGrey.shade700, 
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                );
+              },
             ),
             const SizedBox(width: 12),
           ],
@@ -588,73 +593,4 @@ SizedBox(
       contentPadding: EdgeInsets.zero,
     );
   }
-
-
-  Widget _buildQuickAction({
-    required IconData icon,
-    required Color color,
-    required String label,
-  }) {
-    return Card(
-      elevation: 2,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, size: 30, color: color),
-              const SizedBox(height: 8),
-              Text(label, textAlign: TextAlign.center),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInfoCard({
-    required String title,
-    required String text,
-    required IconData icon,
-    required Color color,
-  }) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, size: 40, color: color),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: color,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    text,
-                    style: const TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
-

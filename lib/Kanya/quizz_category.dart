@@ -140,7 +140,6 @@ class StartQuizPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF0081D7),
         title: null,
         flexibleSpace: Padding(

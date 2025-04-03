@@ -137,10 +137,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account Settings', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text('Account Settings', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
         backgroundColor: Colors.blue.shade700,
         centerTitle: true,
-        elevation: 5,
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
