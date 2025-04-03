@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          toolbarHeight: 80,
+          toolbarHeight: 100,
           backgroundColor: Colors.white,
           elevation: 0,
           title: Row(
@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             IconButton(
               icon: const Icon(Icons.notifications),
-              iconSize: 20,
+              iconSize: 30,
               color: Colors.blueGrey.shade700,
               onPressed: () {
                 Navigator.push(
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             IconButton(
               icon: const Icon(Icons.settings),
-              iconSize: 20, 
+              iconSize: 30, 
               color: Colors.blueGrey.shade700, 
               onPressed: () {
                 Navigator.push(
@@ -164,35 +164,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Search Section
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search for phishing,ransomware, etc...',
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 15, 
-                        horizontal: 20,
-                      ),
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () {},
-                      ),
-                    ),
-                    onChanged: (value) {},
-                    onSubmitted: (value) {},
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              
               // Carousel Section
               SizedBox(
                 height: 230,
@@ -249,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const SmishingScreen()),
+            MaterialPageRoute(builder: (context) => const PretextingScreen()),
           );
         },
         child: _buildCategoryCard(
@@ -263,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const PretextingScreen()),
+            MaterialPageRoute(builder: (context) => const SmishingScreen()),
           );
         },
         child: _buildCategoryCard(

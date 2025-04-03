@@ -23,7 +23,7 @@ class DdosInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Dos Awareness',
+              'DoS & DDoS',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class DdosInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Dos',
+              'DoS & DDoS',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class DdosInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• A DoS attack, much like a DDoS attack, aims to make a target system or network resource unavailable by overwhelming it with excessive requests. However, in DoS, the attack is initiated from a single source, whereas DDoS involves multiple sources (often a botnet).',
+                    '• A DoS(denial-of-service) attack, much like a DDoS(Distributed Denial-of-Service) attack, aims to make a target system or network resource unavailable by overwhelming it with excessive requests. However, in DoS, the attack is initiated from a single source, whereas DDoS involves multiple sources (often a botnet).',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

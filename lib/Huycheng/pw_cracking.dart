@@ -54,7 +54,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Password Cracking',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
