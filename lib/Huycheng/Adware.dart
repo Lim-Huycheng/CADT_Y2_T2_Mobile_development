@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
+import 'package:human_firewall/Lymean/nav_screen.dart';
 
 class AdwareScreen extends StatelessWidget {
   const AdwareScreen({super.key});
@@ -23,7 +23,7 @@ class PhishingInfoScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => NavScreen()),
             );
           },
         ),
