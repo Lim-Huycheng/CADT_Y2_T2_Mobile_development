@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class SmishingScreen extends StatelessWidget {
-  const SmishingScreen ({super.key});
+  const SmishingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const SmishingInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class PhishingInfoScreen extends StatelessWidget {
-  const PhishingInfoScreen({super.key});
+class SmishingInfoScreen extends StatelessWidget {
+  const SmishingInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Smisshing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Smishing',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),
@@ -77,7 +81,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• Smishing is a phishing cybersecurity attack carried out over mobile text messaging, also known as SMS phishing.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -99,7 +103,7 @@ class PhishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: Fake Bank Call',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -124,7 +128,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'The attacker calls the victim, pretending to be from their bank’s fraud department.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -137,7 +141,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'The caller claims there has been suspicious activity on the victim’s bank account and requests verification of personal details (like account numbers or PINs).',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -150,7 +154,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
+                    'Believing the call is legitimate, the victim provides the requested information.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -163,7 +167,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'The attacker now has access to the victim’s bank account and can steal funds or sensitive data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

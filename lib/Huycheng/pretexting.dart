@@ -1,37 +1,49 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
 
 class PretextingScreen extends StatelessWidget {
-  const PretextingScreen ({super.key});
+  const PretextingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pretexting',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const PretextingInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class PhishingInfoScreen extends StatelessWidget {
-  const PhishingInfoScreen({super.key});
+class PretextingInfoScreen extends StatelessWidget {
+  const PretextingInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Phishing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Pretexting',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),
@@ -42,7 +54,7 @@ class PhishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Pretexting',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -52,7 +64,7 @@ class PhishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is Pretexting?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -69,7 +81,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• Pretexting is Creating a fabricated scenario to obtain information.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -91,7 +103,7 @@ class PhishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: Pretexting',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -108,7 +120,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Verify Calls: ',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -116,12 +128,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'Hang up and call the official number to confirm the caller’s identity.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. Avoid Sharing Sensitive Info: ',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -129,12 +141,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'Never share passwords, PINs, or personal data over the phone.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. The Hook:',
+                    '3. Use Call-Blocking Tools:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -142,12 +154,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
+                    'Enable spam filters and call-blocking features on your phone.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. The Outcome:',
+                    '4. Stay Calm:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -155,7 +167,33 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'Don’t act on urgent or threatening requests without verifying.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    '5. Educate & Stay Aware: ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    'Learn about vishing tactics and share knowledge with others.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    '6. Report Suspicious Calls:',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    'Report scam calls to authorities or your telecom provider.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -182,78 +220,78 @@ class PhishingInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Be Skeptical of Unsolicited Calls:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Legitimate organizations rarely ask for sensitive information over the phone.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Verify the Caller’s Identity: ',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Hang up and call the official number of the organization to confirm the request.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Avoid Sharing Personal Information:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Never give out PINs, passwords, or bank details over the phone unless you initiated the call.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Use Call-Blocking Tools:',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Many mobile devices and phone providers offer features that block known scam numbers.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Educate Yourself & Others:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Awareness of vishing tactics helps you and others recognize suspicious calls.',
                     style: TextStyle(fontSize: 16,),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '6. Keep Security Software Updated:',
+                    '6. Stay Calm During Urgent Requests:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
+                    '• Attackers often create panic to push quick decisions. Take time to think before acting.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '7. Report Suspicious Activity:',
+                    '7. Report Suspicious Calls:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
+                    '• Report scam calls to relevant authorities or your telecom provider to help block them.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

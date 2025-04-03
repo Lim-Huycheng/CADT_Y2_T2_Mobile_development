@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class VirusScreen extends StatelessWidget {
-  const VirusScreen ({super.key});
+  const VirusScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Phishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const VirusInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class PhishingInfoScreen extends StatelessWidget {
-  const PhishingInfoScreen({super.key});
+class VirusInfoScreen extends StatelessWidget {
+  const VirusInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Phishing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Virus',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),
@@ -50,7 +54,7 @@ class PhishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Virus',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -60,7 +64,7 @@ class PhishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is Virus?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -77,7 +81,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '•   Virus is a type of malicious software (malware) that attaches itself to legitimate programs or files. Once executed, it can replicate, spread to other files or systems, and damage or steal data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -116,7 +120,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Infected File Download:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -124,12 +128,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'A user unknowingly downloads an infected file (e.g., from an email attachment or unsafe website).',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. Execution & Spread:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -137,34 +141,50 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'When the user opens the file, the virus activates, infecting the system and spreading to other files or devices.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. The Hook:',
+                    '3. Damage:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  Text(
+                    'The virus may delete files, steal data, slow down the system, or cause it to crash.',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
-                    style: TextStyle(fontSize: 16),
+                    'Common Virus Types:',
+                    style: TextStyle(fontSize: 16,
+                    fontWeight: FontWeight.bold,),
+                    
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. The Outcome:',
+                    'File Infector: Attaches to executable files and spreads when the file runs.',
                     style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 15),
                   Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
-                    style: TextStyle(fontSize: 16),
+                    'Macro Virus: Targets documents like Word or Excel using embedded macros.',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    'Boot Sector Virus: Infects the system’s boot sector, activating during startup.',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                 ],
               ),
@@ -190,61 +210,61 @@ class PhishingInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Use Updated Antivirus Software:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Regularly scan your system to detect and remove viruses.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Be Cautious with Downloads & Attachments:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Only download files from trusted sources and avoid opening suspicious email attachments.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Keep Systems & Software Updated',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Regular updates patch security vulnerabilities that viruses can exploit.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Use Firewalls:',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Enable firewalls to block unauthorized access to your network.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Backup Data Regularly:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Maintain secure backups to restore data if a virus causes damage.',
                     style: TextStyle(fontSize: 16,),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '6. Keep Security Software Updated:',
+                    '6. Avoid Using Unknown USB Drives:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
@@ -255,13 +275,13 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '7. Report Suspicious Activity:',
+                    '7. Educate Users:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
+                    '• Promote awareness about phishing emails and unsafe downloads that often spread viruses.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

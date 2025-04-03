@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class VishingScreen extends StatelessWidget {
   const VishingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Phishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const VishingScreen(),
-    );
+    return const VishingInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class Vishing extends StatelessWidget {
-  const Vishing({super.key});
+class VishingInfoScreen extends StatelessWidget {
+  const VishingInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vishing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Vihing',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),
@@ -99,7 +103,7 @@ class Vishing extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Fxake Backing Attack',
+              'Scenario: Fake Bank Call',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -163,7 +167,7 @@ class Vishing extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The attacker now has access to the victim’s bank account and can steal funds or sensitive data.  ',
+                    'The attacker now has access to the victim’s bank account and can steal funds or sensitive data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

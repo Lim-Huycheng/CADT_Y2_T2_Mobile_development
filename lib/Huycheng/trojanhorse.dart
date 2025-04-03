@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class TrojanHorseScreen extends StatelessWidget {
-  const TrojanHorseScreen ({super.key});
+  const TrojanHorseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Phishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const TrojanHorseInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class PhishingInfoScreen extends StatelessWidget {
-  const PhishingInfoScreen({super.key});
+class TrojanHorseInfoScreen extends StatelessWidget {
+  const TrojanHorseInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Phishing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'trojan Horse',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),
@@ -50,7 +54,7 @@ class PhishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Trojan Horse',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -60,7 +64,7 @@ class PhishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is Trojan Horse?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -77,7 +81,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• A Trojan horse (or simply "Trojan") is a type of malware that disguises itself as a legitimate or useful program to trick users into downloading and executing it. Once activated, it can perform a variety of harmful actions, such as stealing data, allowing unauthorized access, or damaging the system.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -99,7 +103,7 @@ class PhishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Disguised as a Legitimate Program:',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -116,7 +120,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Disguised as a Legitimate Program',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -124,12 +128,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'The Trojan appears to be a harmless file or software, often appearing as a game, utility, or update. The user is tricked into downloading and installing it, believing it to be safe.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. Activation and Malicious Behavior:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -137,12 +141,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'Once activated, the Trojan may perform a variety of harmful activities, such as stealing personal information, downloading additional malware, or opening backdoors to give attackers control over the infected system.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. The Hook:',
+                    '3. Silent Operation:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -150,20 +154,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '4. The Outcome:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'Many Trojans are designed to operate quietly in the background, making them difficult to detect and allowing them to continue to cause damage without the user\'s knowledge.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -190,78 +181,67 @@ class PhishingInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Download Software Only from Trusted Sources:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Avoid downloading software from unverified or suspicious websites, and always ensure that files come from official, trusted sources.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Antivirus and Anti-Malware Software:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Use antivirus and anti-malware software to detect and remove Trojans before they can cause harm. Make sure the software is updated regularly.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Enable Firewalls',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Use a firewall to monitor and block unauthorized traffic to and from your system, making it harder for Trojans to communicate with external servers.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Be Cautious with Email Attachments and Links:',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Avoid opening email attachments or clicking on links from unknown or suspicious sources. These are common delivery methods for Trojans.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Regular System and Software Updates:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Keep your operating system and software up to date with the latest security patches to minimize vulnerabilities that Trojans may exploit.',
                     style: TextStyle(fontSize: 16,),
                   ),
+                 
                   SizedBox(height: 15),
                   Text(
-                    '6. Keep Security Software Updated:',
+                    '6. Use Sandboxing for Unknown Software:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
-                   SizedBox(height: 5),
                   Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '7. Report Suspicious Activity:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
+                    '• Run untrusted or unknown programs in a sandbox environment to isolate them from the rest of your system, preventing potential harm.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

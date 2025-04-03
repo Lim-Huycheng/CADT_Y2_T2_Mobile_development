@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class RansomwareScreen extends StatelessWidget {
   const RansomwareScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Vishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const RansomwareInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
-class PhishingInfoScreen extends StatelessWidget {
-  const PhishingInfoScreen({super.key});
+class RansomwareInfoScreen extends StatelessWidget {
+  const RansomwareInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pretexting Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Ransomware',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
-          }
+            Navigator.pop(context); // Navigates back to the previous screen
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -50,7 +54,7 @@ class PhishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Pretexting',
+              'Ransomware',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -60,7 +64,7 @@ class PhishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Pretexting?',
+              'What is Ransomware?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -99,7 +103,7 @@ class PhishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Fake Bank Call',
+              'Scenario: Ransomware',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -137,12 +141,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The ransomware silently encrypts files or locks the entire system, making data inaccessible.).',
+                    'The ransomware silently encrypts files or locks the entire system, making data inaccessible.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    'Ransom Demand:',
+                    '3. Ransom Demand:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -151,48 +155,6 @@ class PhishingInfoScreen extends StatelessWidget {
                   SizedBox(height: 5),
                   Text(
                     'A message appears demanding payment in exchange for a decryption key, often with threats of permanent data loss if unpaid.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Common Ransomware Types:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'Encrypts files and demands payment for decryption.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    'Locker Ransomware',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    ' Locks users out of their entire system.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    'Scareware: ',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    ' Displays fake warnings demanding payment for non-existent issues.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -219,78 +181,78 @@ class PhishingInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Use Strong Antivirus & Anti-Malware Software:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Regularly scan and update your security tools to detect ransomware threats.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Backup Data Frequently:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Keep offline and cloud backups so data can be restored without paying the ransom.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Be Cautious with Links & Attachments:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Avoid opening suspicious emails, links, or attachments from unknown sources.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Update Systems & Software Regularly:',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Security updates fix vulnerabilities that ransomware can exploit.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Enable Firewalls:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Firewalls help block unauthorized access to networks and devices.',
                     style: TextStyle(fontSize: 16,),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '6. Keep Security Software Updated:',
+                    '6.Use Email Filters:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
+                    '• Block malicious emails that might carry ransomware payloads.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '7. Report Suspicious Activity:',
+                    '7. Educate Users:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
+                    '• Train users to recognize phishing scams and suspicious behaviors that lead to ransomware infections.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

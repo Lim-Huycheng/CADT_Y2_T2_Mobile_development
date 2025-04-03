@@ -109,14 +109,11 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               const SizedBox(width: 16),
               CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.blue.shade700,
-                child: const Icon(
-                  Icons.person,
-                  color: Colors.white,
-                  size: 20,
-                ),
-              ),
+              radius: 25,
+              backgroundColor: Colors.blue.shade700,
+              backgroundImage: NetworkImage(
+                  'https://img.icons8.com/?size=100&id=WyivBeZwTRk6&format=png&color=000000'),
+            ),
               const SizedBox(width: 12),
               GestureDetector(
                 onTap: () {
@@ -359,7 +356,7 @@ SizedBox(
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const DosDdosScreen()),
+            MaterialPageRoute(builder: (context) => const DdosScreen()),
           );
         },
         child: _buildCategoryCard(

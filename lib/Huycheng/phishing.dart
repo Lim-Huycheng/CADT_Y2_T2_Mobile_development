@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
-
-// class TermAndConditions extends StatefulWidget {
-//   const TermAndConditions({super.key}); // Fixed constructor name to match class name
-
-//   @override
-//   PhishingInfoScreen createState() => PhishingInfoScreen();
-// }
-
 
 class PhishingScreen extends StatelessWidget {
   const PhishingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Vishing',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const PhishingInfoScreen(),
-    );
+    return const PhishingInfoScreen(); // Directly return the PhishingInfoScreen
   }
 }
 
@@ -32,15 +16,35 @@ class PhishingInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pretexting Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Phishing Awareness',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pop(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
-          }
+            Navigator.pop(context); // Navigates back to the previous screen
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -50,7 +54,7 @@ class PhishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Pretexting',
+              'Phishing',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -60,7 +64,7 @@ class PhishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Pretexting?',
+              'What is Phishing?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -77,7 +81,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Ransomware is a type of malicious software (malware) that attacker encrypts files and demands payment (ransom) for decryption keys.',
+                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -99,7 +103,7 @@ class PhishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Fake Bank Call',
+              'Scenario: Phishing Email Attack',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -116,7 +120,7 @@ class PhishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. Infection:',
+                    '1. The Setup:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -124,12 +128,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The user clicks a malicious link, downloads an infected file, or opens a phishing email attachment.',
+                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Encryption:',
+                    '2. The Bait:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -137,12 +141,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The ransomware silently encrypts files or locks the entire system, making data inaccessible.).',
+                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    'Ransom Demand:',
+                    '3. The Hook:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -150,41 +154,12 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'A message appears demanding payment in exchange for a decryption key, often with threats of permanent data loss if unpaid.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Common Ransomware Types:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'Encrypts files and demands payment for decryption.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    'Locker Ransomware',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    ' Locks users out of their entire system.',
+                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    'Scareware: ',
+                    '4. The Outcome:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -192,7 +167,7 @@ class PhishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    ' Displays fake warnings demanding payment for non-existent issues.',
+                    'The attacker captures the credentials and can now access the victim\'s real account.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
