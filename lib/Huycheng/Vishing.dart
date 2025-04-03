@@ -23,7 +23,7 @@ class VishingInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Vihing',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class VishingInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'Vishing',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class VishingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is Vishing?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class VishingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• Vishing is a social engineering attack where scammers use phone calls or voice messages to trick people into revealing sensitive information like passwords, credit card details, or personal data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -103,7 +103,7 @@ class VishingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: Fake Bank Call',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -128,7 +128,7 @@ class VishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'The attacker calls the victim, pretending to be from their bank’s fraud department.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -141,7 +141,7 @@ class VishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'The caller claims there has been suspicious activity on the victim’s bank account and requests verification of personal details (like account numbers or PINs).',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -154,7 +154,7 @@ class VishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
+                    'Believing the call is legitimate, the victim provides the requested information.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
@@ -167,7 +167,7 @@ class VishingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'The attacker now has access to the victim’s bank account and can steal funds or sensitive data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

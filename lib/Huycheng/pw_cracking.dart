@@ -23,7 +23,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Password Cracking',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is Password Cracking?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• Password cracking is the process of recovering or bypassing passwords from stored data using various techniques, often to gain unauthorized access to systems, accounts, or sensitive data.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -103,7 +103,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: Password Cracking',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Brute-Force Attack:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -128,12 +128,12 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'Trying all possible combinations until the correct password is found.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. Dictionary Attack:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -141,12 +141,12 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'Using common words and phrases from a precompiled list to guess passwords.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. The Hook:',
+                    '3. Rainbow Table Attack:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -154,12 +154,12 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
+                    'Using precomputed tables of hashed passwords to reverse hash functions.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. The Outcome:',
+                    '4. Phishing:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -167,7 +167,7 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'Tricking users into revealing their passwords through fake websites or emails.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -194,79 +194,57 @@ class PasswordCrackingInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Use Strong Passwords',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Combine uppercase, lowercase, numbers, and special characters.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Implement Multi-Factor Authentication',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Adds an extra layer of security.Limit Login Attempts: Lock accounts after multiple failed login attempts.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Use Salting & Hashing',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Encrypt passwords in databases to prevent easy cracking.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Regularly Update Passwords',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Change passwords periodically to reduce exposure.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Educate Users',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Raise awareness about phishing and social engineering tactics.',
                     style: TextStyle(fontSize: 16,),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '6. Keep Security Software Updated:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '7. Report Suspicious Activity:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
-                    style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),

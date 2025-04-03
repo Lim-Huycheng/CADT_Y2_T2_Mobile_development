@@ -64,7 +64,7 @@ class DdosInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is DoS & DDoS?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class DdosInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• A DoS attack, much like a DDoS attack, aims to make a target system or network resource unavailable by overwhelming it with excessive requests. However, in DoS, the attack is initiated from a single source, whereas DDoS involves multiple sources (often a botnet).',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -103,7 +103,7 @@ class DdosInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: Dos and Ddos Attack',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class DdosInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Single Point of Failure:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -128,12 +128,12 @@ class DdosInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'In a typical DoS attack, one device or attacker floods a target server with traffic. The server cannot handle the overload, and services become disrupted or completely unavailable.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. In DDoS Context:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -141,34 +141,7 @@ class DdosInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '3. The Hook:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '4. The Outcome:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
-                    style: TextStyle(fontSize: 16),
+                    'The attacker can control multiple machines, often using a botnet, to initiate a DoS-like attack from various locations simultaneously, creating a much larger and more difficult-to-mitigate flood of traffic.',
                   ),
                 ],
               ),
@@ -194,78 +167,45 @@ class DdosInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. DDoS Protection Services:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Use specialized services like Cloudflare, AWS Shield, or Akamai to mitigate large-scale traffic floods that are typical in DDoS attacks.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Rate Limiting:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• While this is effective for smaller-scale DoS attacks, in DDoS contexts, applying rate-limiting across multiple servers or points of entry helps reduce traffic overload.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Traffic Filtering & Analysis:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Advanced systems can detect patterns indicative of a DoS (or DDoS) attack and block malicious traffic in real time before it reaches the target.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Use of Redundant Networks and Servers:',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '5. Limit Information Sharing',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
-                    style: TextStyle(fontSize: 16,),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '6. Keep Security Software Updated:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '7. Report Suspicious Activity:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
+                    '• With DDoS, leveraging multiple servers or data centers ensures that traffic is distributed evenly, and even if one server is attacked, others can handle the load.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

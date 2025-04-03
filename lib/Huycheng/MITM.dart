@@ -23,7 +23,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Man-In-The-Middle',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
           children: [
             // Title Section
             const Text(
-              'Phishing',
+              'MITM',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
             
             // What is Phishing Section
             const Text(
-              'What is Phishing?',
+              'What is MITM?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '• Phishing is fake emails or messages designed to trick users into providing sensitive information like passwords or credit card numbers.',
+                    '• A Man-in-the-Middle (MitM) attack occurs when an attacker intercepts and potentially alters communication between two parties without their knowledge. The attacker can eavesdrop, steal data, or even inject malicious content into the conversation.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -103,7 +103,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Scenario: Phishing Email Attack',
+              'Scenario: MITM Attack',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. The Setup:',
+                    '1. Interception:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -128,12 +128,12 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'An attacker crafts an email pretending to be from a trusted source, like a bank or company\'s IT department.',
+                    'The attacker positions themselves between the victim and the intended recipient, often through insecure Wi-Fi networks or by exploiting vulnerabilities in communication protocols (e.g., HTTP instead of HTTPS).',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. The Bait:',
+                    '2. Eavesdropping or Data Theft:',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -141,12 +141,12 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The email claims there\'s an urgent issue (e.g., "Your account will be locked unless you verify your information") and includes a link to a fake login page.',
+                    'The attacker can read or capture sensitive information, such as login credentials, credit card numbers, or personal messages, by intercepting the traffic.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. The Hook:',
+                    '3.Data Modification ',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -154,20 +154,7 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'The victim, believing the email is genuine, clicks the link and enters their login credentials on the fake page.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '4. The Outcome:',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'The attacker captures the credentials and can now access the victim\'s real account.',
+                    'In some cases, the attacker may alter the communication, changing the data being sent or introducing malicious commands.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -194,79 +181,57 @@ class ManInTheMiddleInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15),
                   Text(
-                    '1. Verify Before Trusting',
+                    '1. Use Encrypted Connections (HTTPS):',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '• Always double-check the identity of people or sources before sharing sensitive information.',
+                    '• Always use secure, encrypted protocols (e.g., HTTPS) to prevent attackers from intercepting sensitive data.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '2. Be Cautious with Emails & Messages:',
+                    '2. Pulic Wi-Fi Precuation',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Avoid clicking on suspicious links or downloading unexpected attachments. • Check for misspellings, unusual URLs, and urgent demands in messages.',
+                    '• Avoid conducting sensitive activities (like online banking) over unsecured public Wi-Fi. Use a VPN (Virtual Private Network) to encrypt all your communication.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '3. Use Multi-Factor Authentication (MFA):',
+                    '3. Verify SSL/TLS Certificates:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold,),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Even if credentials are stolen, MFA adds an extra layer of protection.',
+                    '• Check for valid SSL/TLS certificates when visiting websites to ensure secure communication between you and the site.',
                     style: TextStyle(fontSize:16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '4. Educate & Train Users',
+                    '4. Two-Factor Authentication (2FA):',
                     style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Regular security awareness training helps individuals recognize social engineering tactics.',
+                    '• Even if credentials are intercepted, 2FA adds an additional layer of security, preventing unauthorized access.',
                     style: TextStyle(fontSize: 16),
                   ),
                   SizedBox(height: 15),
                   Text(
-                    '5. Limit Information Sharing',
+                    '5. Use Strong Authentication:',
                     style: TextStyle(fontSize: 16,
                     fontWeight: FontWeight.bold),
                   ),
                    SizedBox(height: 5),
                   Text(
-                    '• Be careful about what you share publicly (especially on social media), as attackers use this data to craft convincing scams.',
+                    '• Implement strong authentication methods, such as digital signatures or client certificates, to prevent unauthorized users from gaining access.',
                     style: TextStyle(fontSize: 16,),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '6. Keep Security Software Updated:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Regularly update antivirus and firewall protections to catch malicious links and files.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    '7. Report Suspicious Activity:',
-                    style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold,),
-                  ),
-                   SizedBox(height: 5),
-                  Text(
-                    '• Encourage a culture of reporting anything that seems off to reduce potential threats.',
-                    style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),
