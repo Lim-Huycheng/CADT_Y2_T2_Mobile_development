@@ -310,8 +310,29 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Completed'),
-        backgroundColor: Colors.blue.shade700,
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Quiz Completed',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
       ),
       body: Center(
         child: Column(
