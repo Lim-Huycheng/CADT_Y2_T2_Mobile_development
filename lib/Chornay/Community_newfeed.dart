@@ -394,7 +394,7 @@ class _PostFeedPageState extends State<PostFeedPage> {
         backgroundColor: const Color(0xFF0081D7),
         title: null,
         flexibleSpace: Padding(
-          padding: const EdgeInsets.only(top: 25.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
               'Community',
@@ -410,7 +410,7 @@ class _PostFeedPageState extends State<PostFeedPage> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 16.0, top: 10,),
             child: IconButton(
               icon: const Icon(Icons.search, color: Colors.white),
               onPressed: () {
