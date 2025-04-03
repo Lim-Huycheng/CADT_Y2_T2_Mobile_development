@@ -23,7 +23,7 @@ class PhishingInfoScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Phishing Awareness',
+              'Phishing',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
