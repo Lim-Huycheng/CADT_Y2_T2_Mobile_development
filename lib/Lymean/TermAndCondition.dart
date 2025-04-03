@@ -45,10 +45,10 @@ class _TermAndConditionsState extends State<TermAndConditions> {  // Fixed the s
         backgroundColor: const Color(0xFF0081D7),
         title: null,
         flexibleSpace: Padding(
-          padding: const EdgeInsets.only(top: 25.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
-              'Terms & condition',
+              'Terms & Conditions',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -65,9 +65,10 @@ class _TermAndConditionsState extends State<TermAndConditions> {  // Fixed the s
         ),
         toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pop(context); // Navigate back when pressed
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),

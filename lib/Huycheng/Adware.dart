@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:human_firewall/Lymean/nav_screen.dart';
+
 
 class AdwareScreen extends StatelessWidget {
   const AdwareScreen({super.key});
@@ -17,14 +17,34 @@ class PhishingInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Phishing Awareness'),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF0081D7),
+        title: null,
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Center(
+            child: const Text(
+              'Phishing Awareness',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'SourceSerif',
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+        ),
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+        toolbarHeight: 80,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          padding: const EdgeInsets.only(top: 10),
+          icon: const Icon(Icons.arrow_back, color: Colors.black), // Added color for visibility
           onPressed: () {
-            Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => NavScreen()),
-            );
+            Navigator.pop(context); // Navigates back to the previous screen
           },
         ),
       ),

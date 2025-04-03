@@ -19,7 +19,7 @@ class QuizHomeState extends State<QuizHome> {
         backgroundColor: const Color(0xFF0081D7),
         title: null,
         flexibleSpace: Padding(
-          padding: const EdgeInsets.only(top: 25.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
               'Quiz',
@@ -144,7 +144,7 @@ class StartQuizPage extends StatelessWidget {
         backgroundColor: const Color(0xFF0081D7),
         title: null,
         flexibleSpace: Padding(
-          padding: const EdgeInsets.only(top: 25.0),
+          padding: const EdgeInsets.only(top: 10.0),
           child: Center(
             child: const Text(
               'Quiz',
