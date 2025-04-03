@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Chornay/Community_newfeed.dart';
+import '../Chornay/Comment.dart';
 
 class Notitest extends StatefulWidget {
   const Notitest({super.key});
@@ -155,6 +157,8 @@ class _NotitestState extends State<Notitest> {
       "isFavorite": false
     },
   ];
+  
+  get post => null;
 
   void blockUser(int index) {
     if (index >= 0 && index < notifications.length) {
@@ -247,7 +251,51 @@ class _NotitestState extends State<Notitest> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(item['title'], style: const TextStyle(fontWeight: FontWeight.bold)),
+
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  
+                  Navigator.pop(context);
+                 final subtitle = (item['subtitle']?.toString() ?? "").toLowerCase();
+
+                  Future.delayed(Duration(milliseconds: 1), () {
+                    if (subtitle == "posted a news") { 
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PostFeedPage()),
+                      );
+                    } else if (subtitle == "replied your text") {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(  builder: (context) => CommentPage(post: post),),
+                      );
+                    }
+                  });
+                },
+                child: Text(
+                  item['title'],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.info_outline),
+              onPressed: () {
+                
+              },
+            ),
+          ],
+        ),
+
+
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
