@@ -80,7 +80,7 @@ class _PostFeedPageState extends State<PostFeedPage> {
     },
     {
       'profileUrl': 'https://img.icons8.com/?size=100&id=10002&format=png&color=000000',
-      'name': 'Sophal Mony',
+      'name': 'Phalla Mony',
       'date': '14 hours ago',
       'title': 'Why multi-factor authentication is essential?',
       'subtitle': 'Multi-factor authentication (MFA) is one of the most effective ways...',

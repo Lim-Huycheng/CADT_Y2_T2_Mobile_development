@@ -7,7 +7,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String email = 'john.doe@example.com'; // Make email mutable
+  String email = 'Marklee526@gmail.com'; // Make email mutable
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class ProfileCard extends StatelessWidget {
                   'https://img.icons8.com/?size=100&id=WyivBeZwTRk6&format=png&color=000000'),
             ),
             SizedBox(height: 30),
-            Text('John Doe', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+            Text('Mark Lee', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
             SizedBox(height: 5),
             Text('Software Engineer', style: TextStyle(fontSize: 22, color: Colors.blueGrey[600])),
             SizedBox(height: 20),
@@ -101,9 +101,7 @@ class ProfileCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SettingsScreen(
-                      onEmailChanged: onEmailChanged,
-                    ),
+                    builder: (context) => SettingsScreen(),
                   ),
                 );
               },
@@ -114,7 +112,7 @@ class ProfileCard extends StatelessWidget {
                 elevation: 8,
               ),
               child: Text('Settings', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ),
+            )
           ],
         ),
       ),
@@ -123,9 +121,7 @@ class ProfileCard extends StatelessWidget {
 }
 
 class SettingsScreen extends StatefulWidget {
-  final Function(String) onEmailChanged;
-
-  SettingsScreen({required this.onEmailChanged});
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -134,130 +130,156 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _isNotificationEnabled = true;
   String _privacySetting = 'Public';
-
-  // Controllers for text fields
-  final TextEditingController _emailController = TextEditingController(text: 'john.doe@example.com');
-  final TextEditingController _passwordController = TextEditingController();
-
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
+  bool _isDarkMode = false;
+  String _selectedLanguage = 'English';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Account Settings', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blue.shade700,
+        centerTitle: true,
+        elevation: 5,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            ListTile(
-              title: Text('Change Email'),
-              trailing: Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                _showChangeEmailDialog(context);
-              },
-            ),
-            ListTile(
-              title: Text('Change Password'),
-              trailing: Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                _showChangePasswordDialog(context);
-              },
-            ),
-            ListTile(
-              title: Text('Privacy Settings'),
-              subtitle: Text(_privacySetting),
-              trailing: Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                _showPrivacyDialog(context);
-              },
-            ),
+            _buildSectionTitle('Privacy & Security'),
+            _buildCard(_buildPrivacyTile()),
+
+            _buildSectionTitle('Preferences'),
+            _buildCard(_buildNotificationTile()),
+            _buildCard(_buildThemeTile()),
+            _buildCard(_buildLanguageTile()),
+
+            _buildSectionTitle('Account Management'),
+            _buildCard(_buildManageDevicesTile()),
+            _buildCard(_buildAccountDeletionTile()),
+
+            _buildSectionTitle('Support'),
+            _buildCard(_buildHelpSupportTile()),
+            _buildCard(_buildLogoutTile()),
           ],
         ),
       ),
     );
   }
 
-  // Show email change dialog
-  void _showChangeEmailDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Change Email'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                TextFormField(
-                  controller: _emailController,
-                  focusNode: _emailFocusNode,
-                  decoration: InputDecoration(labelText: 'New Email'),
-                  keyboardType: TextInputType.emailAddress,
-                  autofocus: true,
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                widget.onEmailChanged(_emailController.text);
-                Navigator.pop(context);
-              },
-              child: Text('Save', style: TextStyle(color: Colors.blue.shade700)),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        );
-      },
+  // Section Title
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, bottom: 10),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue.shade700),
+      ),
     );
   }
 
-  // Show password change dialog
-  void _showChangePasswordDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Change Password'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                TextFormField(
-                  controller: _passwordController,
-                  focusNode: _passwordFocusNode,
-                  decoration: InputDecoration(labelText: 'New Password'),
-                  obscureText: true,
-                  autofocus: true,
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                widget.onEmailChanged(_passwordController.text); // Or handle password change
-                Navigator.pop(context);
-              },
-              child: Text('Save', style: TextStyle(color: Colors.blue.shade700)),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        );
-      },
+  // Custom Card for better UI
+  Widget _buildCard(Widget child) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 3,
+      child: Padding(padding: const EdgeInsets.symmetric(vertical: 8), child: child),
     );
   }
 
-  // Show privacy settings dialog
+  // Privacy Settings Tile
+  ListTile _buildPrivacyTile() {
+    return ListTile(
+      leading: Icon(Icons.lock, color: Colors.blue),
+      title: Text('Privacy Settings'),
+      subtitle: Text(_privacySetting),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showPrivacyDialog(context),
+    );
+  }
+
+  ListTile _buildNotificationTile() {
+    return ListTile(
+      leading: Icon(Icons.notifications, color: Colors.orange),
+      title: Text('Notifications'),
+      trailing: Switch(
+        value: _isNotificationEnabled,
+        onChanged: (bool value) {
+          setState(() {
+            _isNotificationEnabled = value;
+          });
+        },
+      ),
+    );
+  }
+
+  ListTile _buildThemeTile() {
+    return ListTile(
+      leading: Icon(Icons.dark_mode, color: Colors.purple),
+      title: Text('Dark Mode'),
+      trailing: Switch(
+        value: _isDarkMode,
+        onChanged: (bool value) {
+          setState(() {
+            _isDarkMode = value;
+          });
+        },
+      ),
+    );
+  }
+
+  // Language Selection Tile
+  ListTile _buildLanguageTile() {
+    return ListTile(
+      leading: Icon(Icons.language, color: Colors.green),
+      title: Text('Select Language'),
+      subtitle: Text(_selectedLanguage),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showLanguageDialog(context),
+    );
+  }
+
+  // Manage Devices Tile
+  ListTile _buildManageDevicesTile() {
+    return ListTile(
+      leading: Icon(Icons.devices, color: Colors.blue.shade700),
+      title: Text('Manage Connected Devices'),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showManageDevicesDialog(context),
+    );
+  }
+
+  // Account Deletion Tile
+  ListTile _buildAccountDeletionTile() {
+    return ListTile(
+      leading: Icon(Icons.delete, color: Colors.red),
+      title: Text('Account Deletion'),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showAccountDeletionDialog(context),
+    );
+  }
+
+  // Help & Support Tile
+  ListTile _buildHelpSupportTile() {
+    return ListTile(
+      leading: Icon(Icons.help, color: Colors.teal),
+      title: Text('Help & Support'),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showHelpSupportDialog(context),
+    );
+  }
+
+  // Logout Tile
+  ListTile _buildLogoutTile() {
+    return ListTile(
+      leading: Icon(Icons.exit_to_app, color: Colors.red),
+      title: Text('Logout'),
+      trailing: Icon(Icons.arrow_forward_ios),
+      onTap: () => _showLogoutDialog(context),
+    );
+  }
+
+  // Show Privacy Settings Dialog
   void _showPrivacyDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -266,27 +288,245 @@ class _SettingsScreenState extends State<SettingsScreen> {
           title: Text('Change Privacy Settings'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
+            children: ['Public', 'Private', 'Friends Only']
+                .map((option) => ListTile(
+                      title: Text(option),
+                      onTap: () {
+                        setState(() {
+                          _privacySetting = option;
+                        });
+                        Navigator.pop(context);
+                      },
+                    ))
+                .toList(),
+          ),
+        );
+      },
+    );
+  }
+
+  // Show Language Selection Dialog
+  void _showLanguageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Select Language'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: ['English', 'Khmer', 'French']
+                .map((lang) => ListTile(
+                      title: Text(lang),
+                      onTap: () {
+                        setState(() {
+                          _selectedLanguage = lang;
+                        });
+                        Navigator.pop(context);
+                      },
+                    ))
+                .toList(),
+          ),
+        );
+      },
+    );
+  }
+
+  // Show Manage Devices Dialog
+  void _showManageDevicesDialog(BuildContext context) {
+    List<String> connectedDevices = [
+      'Vivo v29e - Connected',
+      'IPhone 13 - Disconnected',
+      'Samsung Galaxy S20 - Connected',
+      'Google Pixel 6 - Disconnected',
+      'Huawei P40 - Disconnected',
+    ];
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Manage Connected Devices'),
+          content: Container(
+            width: double.maxFinite,
+            height: 250, // Adjust the height as needed
+            child: ListView.builder(
+              itemCount: connectedDevices.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(connectedDevices[index]),
+                  trailing: Icon(
+                    connectedDevices[index].contains('Connected') 
+                        ? Icons.check_circle 
+                        : Icons.remove_circle,
+                    color: connectedDevices[index].contains('Connected')
+                        ? Colors.green
+                        : Colors.red,
+                  ),
+                  onTap: () {
+                    // Handle device management logic here, e.g., disconnect
+                    Navigator.pop(context);
+                  },
+                );
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Close', style: TextStyle(color: Colors.blue.shade700)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+  // Show Account Deletion Dialog
+  void _showAccountDeletionDialog(BuildContext context) {
+    TextEditingController passwordController = TextEditingController();
+    String? selectedReason;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Account Deletion'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              ListTile(
-                title: Text('Public'),
-                onTap: () {
-                  setState(() {
-                    _privacySetting = 'Public';
-                  });
-                  Navigator.pop(context);
+              Text('Are you sure you want to delete your account? This action is irreversible.'),
+              SizedBox(height: 10),
+
+              // Reason Selection Dropdown
+              DropdownButtonFormField<String>(
+                decoration: InputDecoration(labelText: 'Reason for deleting (optional)'),
+                items: ['Privacy Concerns', 'Not Useful', 'Other']
+                    .map((reason) => DropdownMenuItem(
+                          value: reason,
+                          child: Text(reason),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  selectedReason = value;
                 },
               ),
-              ListTile(
-                title: Text('Private'),
-                onTap: () {
-                  setState(() {
-                    _privacySetting = 'Private';
-                  });
-                  Navigator.pop(context);
-                },
+
+              SizedBox(height: 10),
+
+              // Password Input Field
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Enter your password',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ],
           ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Cancel', style: TextStyle(color: Colors.red)),
+            ),
+            TextButton(
+              onPressed: () {
+                if (passwordController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Please enter your password.')),
+                  );
+                  return;
+                }
+
+                // Print or send the reason (if selected)
+                print('Account Deletion Reason: ${selectedReason ?? "No reason provided"}');
+
+                // Simulate account deletion logic
+                Navigator.pop(context); // Close dialog
+
+                // Show success message
+                _showSuccessDialog(context);
+              },
+              child: Text('Delete', style: TextStyle(color: Colors.blue.shade700)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Show Success Message After Deletion
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Account Deleted'),
+          content: Text('Your account has been successfully deleted.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close success dialog
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Welcome(),
+                  ),
+                );
+              },
+              child: Text('OK', style: TextStyle(color: Colors.blue.shade700)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+  // Show Help & Support Dialog
+  void _showHelpSupportDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Help & Support'),
+          content: Text('Contact our support team at humanfirewall@gmail.com for assistance.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Close', style: TextStyle(color: Colors.blue.shade700)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Show Logout Dialog
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Are you sure you want to log out?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('No', style: TextStyle(color: Colors.red)),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Welcome(),
+                  ),
+                );
+              },
+              child: Text('Yes', style: TextStyle(color: Colors.blue.shade700)),
+            ),
+          ],
         );
       },
     );
